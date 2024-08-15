@@ -13,27 +13,24 @@ def is_overlap(curr_line):
     x1, x2 = candidates[curr_line]
 
     if any(i == 1 for i in big_line[x1:(x2 + 1)]):
-        return False
+        return True
     else:
         for i in range(x1, x2 + 1):
             big_line[i] = 1
 
-        return True
+        return False
 
-max_cnt = 1
+max_cnt = 0
 
 def cal(curr_line, count):
     global max_cnt
     if curr_line == n:
-        max_cnt = max(max_cnt, count)
         return
 
     x1, x2 = candidates[curr_line]
 
     if not is_overlap(curr_line):
-        max_cnt = max(max_cnt, count)
-        return
-    else:
+        max_cnt = max(max_cnt, count + 1)
         for i in range(curr_line + 1, len(candidates)):
             cal(i, count+1)
         for i in range(x1, x2 + 1):
@@ -42,5 +39,5 @@ def cal(curr_line, count):
     return
 
 for i in range(0, len(candidates)):
-    cal(i, 1)
+    cal(i, 0)
 print(max_cnt)
