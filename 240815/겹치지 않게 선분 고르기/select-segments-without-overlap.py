@@ -31,6 +31,7 @@ def cal(curr_line, count):
     x1, x2 = candidates[curr_line]
 
     if not is_overlap(curr_line):
+        max_cnt = max(max_cnt, count)
         return
     else:
         cal(curr_line + 1, count+1)
