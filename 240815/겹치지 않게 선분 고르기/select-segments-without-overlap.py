@@ -34,11 +34,13 @@ def cal(curr_line, count):
         max_cnt = max(max_cnt, count)
         return
     else:
-        cal(curr_line + 1, count+1)
+        for i in range(curr_line + 1, len(candidates)):
+            cal(i, count+1)
         for i in range(x1, x2 + 1):
             big_line[i] = 0
 
     return
 
-cal(0, 0)
+for i in range(0, len(candidates)):
+    cal(i, 0)
 print(max_cnt)
