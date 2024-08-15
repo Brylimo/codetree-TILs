@@ -20,7 +20,7 @@ def is_overlap(curr_line):
 
         return True
 
-max_cnt = 0
+max_cnt = 1
 
 def cal(curr_line, count):
     global max_cnt
@@ -42,5 +42,5 @@ def cal(curr_line, count):
     return
 
 for i in range(0, len(candidates)):
-    cal(i, 0)
+    cal(i, 1)
 print(max_cnt)
