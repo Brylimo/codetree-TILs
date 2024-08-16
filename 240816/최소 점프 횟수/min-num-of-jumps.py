@@ -11,16 +11,16 @@ def calc(curr_num):
         return
     jump_cnt = array[curr_num]
 
+    if sum(seq) + 1 > n:
+            return
+    elif sum(seq) + 1 == n:
+        min_value = min(min_value, len(seq))
+        return
+    
     for i in range(1, jump_cnt + 1):
-        if sum(seq) + 1 > n:
-            return
-        if sum(seq) + 1 == n:
-            min_value = min(min_value, len(seq))
-            return
-        else:
-            seq.append(i)
-            calc(curr_num + i)
-            seq.pop()
+        seq.append(i)
+        calc(curr_num + i)
+        seq.pop()
 
 calc(0)
 if min_value == sys.maxsize:
