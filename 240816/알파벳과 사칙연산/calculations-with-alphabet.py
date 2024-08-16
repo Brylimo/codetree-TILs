@@ -4,7 +4,7 @@ input = sys.stdin.readline
 string = input().rstrip()
 line = list(string)
 
-op_list = string.replace('+', '-').replace('*', '-').split('-')
+op_list = list(set(string.replace('+', '-').replace('*', '-').split('-')))
 
 array = []
 
@@ -15,11 +15,11 @@ def evaluate(length):
     for op in line:
         if ord('a') <= ord(op) <= ord('f'):
             if opp == '-':
-                prev -= array[ord(op) - ord('a')]
+                prev -= array[op_list.index(op)]
             elif opp == '*':
-                prev *= array[ord(op) - ord('a')]
+                prev *= array[op_list.index(op)]
             else:
-                prev += array[ord(op) - ord('a')]
+                prev += array[op_list.index(op)]
         else:
             opp = op
 
@@ -28,8 +28,8 @@ def evaluate(length):
 max_val = -int(1e9)
 def calc(curr_num):
     global max_val
-    if curr_num == len(set(op_list)):
-        res = evaluate(len(set(op_list)))
+    if curr_num == len(op_list):
+        res = evaluate(len(op_list))
         max_val = max(max_val, res)
         return
 
