@@ -28,7 +28,7 @@ def evaluate():
 
     return prev
 
-max_val = 0
+max_val = -int(1e9)
 def calc(curr_num):
     global max_val
     if curr_num == len(op_list):
@@ -40,6 +40,8 @@ def calc(curr_num):
         array.append(i)
         calc(curr_num + 1)
         array.pop()
+
+    return
 
 calc(0)
 
