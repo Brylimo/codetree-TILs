@@ -8,21 +8,18 @@ op_list = string.replace('+', '-').replace('*', '-').split('-')
 
 array = []
 
-def evaluate():
-    idx = 0
+def evaluate(length):
     prev = 0
-    opp = None
+    opp = '+'
+    
     for op in line:
-        if ord('a') <= ord(op) <= ord('z'):
-            if opp is None:
-                prev += array[idx]
-            elif opp == '-':
-                prev -= array[idx]
+        if ord('a') <= ord(op) <= ord('f'):
+            if opp == '-':
+                prev -= array[ord(op) - ord('a')]
             elif opp == '*':
-                prev *= array[idx]
+                prev *= array[ord(op) - ord('a')]
             else:
-                prev += array[idx]
-            idx += 1
+                prev += array[ord(op) - ord('a')]
         else:
             opp = op
 
@@ -31,8 +28,8 @@ def evaluate():
 max_val = -int(1e9)
 def calc(curr_num):
     global max_val
-    if curr_num == len(op_list):
-        res = evaluate()
+    if curr_num == len(set(op_list)):
+        res = evaluate(len(set(op_list)))
         max_val = max(max_val, res)
         return
 
