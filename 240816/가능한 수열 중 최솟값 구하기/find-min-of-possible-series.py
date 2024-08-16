@@ -4,7 +4,7 @@ sequence = []
 
 def is_possible():
     for k in range(1, n // 2 + 1):
-        for j in range(0, n - k, k):
+        for j in range(0, n - k, 1):
             if str(sequence[j:j+k]) == str(sequence[j+k:j+2*k]):
                 return False
 
