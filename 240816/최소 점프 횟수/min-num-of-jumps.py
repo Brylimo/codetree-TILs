@@ -6,6 +6,9 @@ seq = []
 min_value = sys.maxsize
 def calc(curr_num):
     global min_value
+
+    if curr_num >= n:
+        return
     jump_cnt = array[curr_num]
 
     for i in range(1, jump_cnt + 1):
