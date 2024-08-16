@@ -1,3 +1,4 @@
+import sys
 n = int(input())
 
 sequence = []
@@ -15,6 +16,9 @@ def calc(curr_num):
     if curr_num == n:
         if is_possible():
             result.append(tuple(sequence))
+            for i in range(len(result[0])):
+                print(result[0][i], end="")
+            sys.exit(0)
         return
 
     for i in range(4, 7):
