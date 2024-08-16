@@ -16,7 +16,7 @@ def calc(curr_num):
             return
         else:
             seq.append(i)
-            calc(curr_num + 1)
+            calc(curr_num + i)
             seq.pop()
 
 calc(0)
