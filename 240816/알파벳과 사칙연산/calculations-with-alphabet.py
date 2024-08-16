@@ -13,7 +13,7 @@ def evaluate():
     prev = 0
     opp = None
     for op in line:
-        if ord('a') <= ord(op) <= ord('f'):
+        if ord('a') <= ord(op) <= ord('z'):
             if opp is None:
                 prev += array[idx]
             elif opp == '-':
