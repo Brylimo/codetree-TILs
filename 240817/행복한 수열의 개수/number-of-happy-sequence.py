@@ -6,10 +6,10 @@ grid = [
 
 cnt = 0
 for i in range(n):
-    for j in range(n):
+    for j in range(n - m + 1):
         flag = True
         for k in range(m):
-            if grid[i][j] != grid[i][j + k]:
+            if grid[i][j + k] != grid[i][j]:
                 flag = False
                 break
         if flag:
@@ -17,10 +17,10 @@ for i in range(n):
             break
 
 for j in range(n):
-    for i in range(n):
+    for i in range(n - m + 1):
         flag = True
         for k in range(m):
-            if grid[i][j] != grid[i + k][j]:
+            if grid[i + k][j] != grid[i][j]:
                 flag = False
                 break
         if flag:
