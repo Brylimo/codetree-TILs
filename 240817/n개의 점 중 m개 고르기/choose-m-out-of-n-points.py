@@ -21,8 +21,17 @@ def select_point(curr_idx, cnt):
     global min_val
     if curr_idx == n:
         if cnt == m:
-            seq.sort()
-            min_val = min(min_val, get_min_dist(seq[0], seq[-1]))
+            temp = 0
+            i_dix = 0
+            j_idx = 0
+            for i in range(m - 1):
+                for j in range(i + 1, m):
+                    if temp < abs(seq[i][0] - seq[j][0]) ** 2 + abs(seq[i][1] - seq[j][1]) ** 2:
+                        i_idx = i 
+                        j_idx = j
+                        temp = abs(seq[i][0] - seq[j][0]) ** 2 + abs(seq[i][1] - seq[j][1]) ** 2
+
+            min_val = min(min_val, get_min_dist(seq[i_idx], seq[j_idx]))
             return
         return
 
