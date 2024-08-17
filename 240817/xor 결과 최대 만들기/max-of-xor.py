@@ -21,7 +21,7 @@ def calc(curr_num, cnt):
             max_val = max(max_val, xor())
         return
 
-    combinations.append(curr_num)
+    combinations.append(array[curr_num])
     calc(curr_num + 1, cnt + 1)
     combinations.pop()
 
