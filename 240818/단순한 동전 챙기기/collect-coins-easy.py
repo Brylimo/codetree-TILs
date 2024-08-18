@@ -47,6 +47,7 @@ def find_path(idx, cnt):
 
     find_path(idx + 1, cnt)
 
+nums.sort()
 find_path(0, 0)
 if answer == sys.maxsize:
     print(-1)
