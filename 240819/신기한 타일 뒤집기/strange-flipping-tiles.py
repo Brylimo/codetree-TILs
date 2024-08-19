@@ -17,7 +17,7 @@ for _ in range(n):
         color = 'w'
         segment_left = cur - distance + 1
         segment_right = cur
-        cur -= distance + 1
+        cur -= distance - 1
 
     segments.append((color, segment_left, segment_right))
 
