@@ -15,8 +15,8 @@ for _ in range(n):
             pos_n[tick] = pos_n[tick - 1] + 1 
             tick += 1
 
-for i in range(tick, 1000001):
-    pos_n[tick] = pos_n[tick - 1]
+for i in range(tick, len(pos_n)):
+    pos_n[i] = pos_n[tick - 1]
 
 pos_m = [0] * 1000001
 tick = 1
@@ -33,8 +33,8 @@ for _ in range(m):
             pos_m[tick] = pos_m[tick - 1] + 1
             tick += 1
 
-for i in range(tick, 1000001):
-    pos_m[tick] = pos_m[tick - 1]
+for i in range(tick, len(pos_m)):
+    pos_m[i] = pos_m[tick - 1]
 
 cnt = 0
 max_tick = max(len(pos_n), len(pos_m))
