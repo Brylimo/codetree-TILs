@@ -21,4 +21,7 @@ for i in range(MAX_R):
             min_x = min(min_x, j)
             min_y = min(min_y, i)
 
-print((max_x - min_x + 1) * (max_y - min_y + 1))
+if min_x == sys.maxsize or min_y == sys.maxsize:
+    print(0)
+else:
+    print((max_x - min_x + 1) * (max_y - min_y + 1))
