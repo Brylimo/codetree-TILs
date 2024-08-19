@@ -1,7 +1,10 @@
+import sys
+INF = sys.maxsize
+
 n, m = map(int, input().split())
 
-a_array = [0] * 1000001
-b_array = [0] * 1000001
+a_array = [INF] * 1000001
+b_array = [INF] * 1000001
 
 tick = 0
 loc = 0
@@ -36,6 +39,10 @@ for i in range(m):
     tick += t
 
 for i in range(1, len(a_array)):
-    if a_array[i] == b_array[i]:
+    if a_array[i] == b_array[i] and (a_array[i] != INF or b_array[i] != INF):
         print(i)
+        break
+    
+    if a_array[i] == INF or b_array[i] == INF:
+        print(-1)
         break
