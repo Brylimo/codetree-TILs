@@ -5,7 +5,7 @@ for _ in range(n):
     x = int(input())
     array.append(x)
 
-answer = 0
+answer = 1
 cnt = 1
 for i in range(1, len(array)):
     if array[i - 1] > 0 and array[i] > 0:
