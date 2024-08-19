@@ -6,7 +6,7 @@ for _ in range(n):
     array.append(x)
 
 answer = 0
-cnt = 0
+cnt = 1
 for i in range(1, len(array)):
     if array[i - 1] > 0 and array[i] > 0:
         cnt += 1
