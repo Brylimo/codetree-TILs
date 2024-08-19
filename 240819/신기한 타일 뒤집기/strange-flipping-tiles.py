@@ -1,5 +1,5 @@
-OFFSET = 10000
-MAX_R = 20001
+OFFSET = 100000
+MAX_R = 200010
 n = int(input())
 
 cur = 0
