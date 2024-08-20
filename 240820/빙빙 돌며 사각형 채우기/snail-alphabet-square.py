@@ -16,7 +16,11 @@ while True:
         break
 
     cnt += 1
-    num += 1
+    if num == ord('Z'):
+        num = ord('A')
+    else:
+        num += 1
+
 
     nx = x + dx[dir]
     ny = y + dy[dir]
