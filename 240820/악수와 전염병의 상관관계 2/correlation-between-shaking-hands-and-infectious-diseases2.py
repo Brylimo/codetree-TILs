@@ -14,12 +14,12 @@ sick_list[P] = K
 for at, ax, ay in order:
     if ax in ans and sick_list[ax] > 0:
         sick_list[ax] -= 1
-        if not ay in ans:
+        if ay not in ans:
             ans.append(ay)
             sick_list[ay] = K
-    elif ay in ans and sick_list[ay] > 0:
+    if ay in ans and sick_list[ay] > 0:
         sick_list[ay] -= 1
-        if not ax in ans:
+        if ax not in ans:
             ans.append(ax)
             sick_list[ax] = K
 
