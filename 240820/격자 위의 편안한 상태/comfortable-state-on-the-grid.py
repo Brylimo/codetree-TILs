@@ -13,7 +13,7 @@ for _ in range(m):
         nx = r - 1 + dx[i]
         ny = c - 1 + dy[i]
 
-        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+        if nx < 0 or nx >= n or ny < 0 or ny >= n:
             continue
 
         if grid[nx][ny] == 1:
