@@ -18,7 +18,7 @@ if grid[x][y] == 'W':
         sys.exit(0)
 
     for bx, by in black_pos:
-        if bx >= r - 2 or by >= c - 2:
+        if bx >= r - 2 or by >= c - 2 or bx == 0 or by == 0:
             continue
 
         for i in range(bx + 1, r - 1):
@@ -31,7 +31,7 @@ else:
         sys.exit(0)
 
     for bx, by in black_pos:
-        if bx >= r - 1 or by >= c - 1:
+        if bx >= r - 1 or by >= c - 1 or bx == 0 or by == 0:
             continue
 
         for i in range(1, bx):
