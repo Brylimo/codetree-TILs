@@ -18,15 +18,15 @@ elif dir == 1:
     x = seg
 elif dir == 2:
     x = n - 1
-    y = n - seg
+    y = n - seg - 1
 elif dir == 3:
     y = 0
-    x = n - seg
+    x = n - seg - 1
 
 ans = 0
 while (0 <= x < n and 0 <= y < n):
     ans += 1
-    
+
     if grid[x][y] == '/':
         if dir % 2 == 0:
             dir = (dir + 1) % 4
