@@ -1,3 +1,5 @@
+import sys
+
 r, c = map(int, input().split())
 grid = []
 
@@ -11,6 +13,10 @@ for i in range(r):
 cnt = 0
 x, y = 0, 0
 if grid[x][y] == 'W':
+    if grid[r - 1][c - 1] == 'W':
+        print(0)
+        sys.exit(0)
+
     for bx, by in black_pos:
         if bx >= r - 2 or by >= c - 2:
             continue
@@ -20,6 +26,10 @@ if grid[x][y] == 'W':
                 if grid[i][j] == 'W':
                     cnt += 1
 else:
+    if grid[r - 1][c - 1] == 'B':
+        print(0)
+        sys.exit(0)
+
     for bx, by in black_pos:
         if bx >= r - 1 or by >= c - 1:
             continue
