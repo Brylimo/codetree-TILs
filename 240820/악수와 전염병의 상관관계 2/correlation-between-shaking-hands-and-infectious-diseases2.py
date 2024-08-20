@@ -7,16 +7,21 @@ for _ in range(T):
     t, x, y = map(int, input().rstrip().split())
     order.append((t, x, y))
 
-cnt = K
 ans = [P]
 order.sort()
+sick_list = [0] * (N + 1)
+sick_list[P] = K
 for at, ax, ay in order:
-    if ax == P and cnt > 0:
-        cnt -= 1
-        ans.append(ay)
-    elif ay == P and cnt > 0:
-        cnt -= 1
-        ans.append(ax)
+    if ax in ans and sick_list[ax] > 0:
+        sick_list[ax] -= 1
+        if not ay in ans:
+            ans.append(ay)
+            sick_list[ay] = K
+    elif ay in ans and sick_list[ay] > 0:
+        sick_list[ay] -= 1
+        if not ax in ans:
+            ans.append(ax)
+            sick_list[ax] = K
 
 for i in range(1, N + 1):
     if i in ans:
