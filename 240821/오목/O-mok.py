@@ -29,5 +29,13 @@ for i in range(19):
             print(1)
             print(i + 3, j + 3)
             sys.exit(0)
+        elif j > 4 and (grid[i][j] == 1 and grid[i + 1][j - 1] == 1 and grid[i + 2][j - 2] == 1 and grid[i + 3][j - 3] == 1 and grid[i + 4][j - 4] == 1):
+            print(1)
+            print(i + 3, j - 1)
+            sys.exit(0)
+        elif j > 4 and (grid[i][j] == 2 and grid[i + 1][j - 1] == 2 and grid[i + 2][j - 2] == 2 and grid[i + 3][j - 3] == 2 and grid[i + 4][j - 4] == 2):
+            print(2)
+            print(i + 3, j - 1)
+            sys.exit(0)
 
 print(0)
