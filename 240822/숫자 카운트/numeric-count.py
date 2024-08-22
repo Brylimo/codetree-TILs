@@ -9,6 +9,9 @@ ans = 0
 for i in range(1, 10):
     for j in range(1, 10):
         for k in range(1, 10):
+            if i == j or i == k or j == k:
+                continue
+
             target = [i, j, k]
 
             correct = 0
