@@ -11,13 +11,19 @@ for i in range(n):
     cnt = 0
     for j in range(n):
         if i == j:
-            temp += p_array[i] // 2
+            temp += p_array[j] // 2
+            if temp > b:
+                break
+
+            cnt += 1
+            continue
 
         temp += p_array[j]
-        cnt += 1
 
         if temp > b:
             break
+
+        cnt += 1
 
     ans = max(ans, cnt)
 
