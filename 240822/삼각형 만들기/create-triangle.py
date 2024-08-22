@@ -15,11 +15,12 @@ for i in range(n):
             two = points[j]
             three = points[k]
 
-            min_x = min(one[0], two[0], three[0])
-            max_x = max(one[0], two[0], three[0])
-            min_y = min(one[1], two[1], three[1])
-            max_y = max(one[1], two[1], three[1])
+            if (one[0] == two[0] or two[0] == three[0] or one[0] == three[0]) and (one[1] == two[1] or two[1] == three[1] or one[1] == three[1]):
+                min_x = min(one[0], two[0], three[0])
+                max_x = max(one[0], two[0], three[0])
+                min_y = min(one[1], two[1], three[1])
+                max_y = max(one[1], two[1], three[1])
 
-            ans = max(ans, (max_x - min_x) * (max_y - min_y))
+                ans = max(ans, (max_x - min_x) * (max_y - min_y))
 
 print(ans)
