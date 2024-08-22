@@ -10,7 +10,7 @@ for _ in range(n):
     p, s = map(int, input().split())
     presents.append(Present(p, s))
 
-presents.sort(key=lambda a:(a.p + a.s))
+presents.sort(key=lambda a:a.p)
 
 ans = 0
 for i in range(n):
