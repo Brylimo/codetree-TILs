@@ -10,7 +10,7 @@ for _ in range(n):
     p, s = map(int, input().split())
     presents.append(Present(p, s))
 
-presents.sort(key=lambda a:a.p)
+presents.sort(key=lambda a:(a.p + a.s))
 
 ans = 0
 for i in range(n):
@@ -18,7 +18,7 @@ for i in range(n):
     sum_value = 0
     for j in range(n):
         if i == j:
-            sum_value += presents[j].p // 2 + presents[j].s
+            sum_value += (presents[j].p + presents[j].s) // 2
             if sum_value > b:
                 break
             cnt += 1
