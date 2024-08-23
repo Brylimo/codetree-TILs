@@ -18,8 +18,7 @@ for i in range(n):
         elif seats[j] == 1 and cnt > 0:
             sub = min(sub, cnt)
             cnt = 1
-    if cnt > 1:
-        sub = min(sub, cnt)
+    
     seats[i] = 0
     ans = max(ans, sub)
 
