@@ -11,9 +11,9 @@ for i in range(1, 10001):
 
     cnt = 0
     for j in range(n):
-        if a <= array[j] < b:
+        if a <= array[j] <= b:
             cnt += 1
 
-    ans = max(ans, cnt + 1)
+    ans = max(ans, cnt)
 
 print(ans)
