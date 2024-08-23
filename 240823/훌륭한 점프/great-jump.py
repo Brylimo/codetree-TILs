@@ -16,7 +16,7 @@ def is_possible(target):
 ans = int(1e9)
 for i in range(max(array), 0, -1):
     if is_possible(i):
-        ans = min(ans, i)
+        ans = min(ans, max(i, array[0], array[-1]))
     else:
         break
 
