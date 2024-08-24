@@ -18,6 +18,7 @@ for i in candidates:
                 prev = j
             else:
                 dist = j - prev
+                prev = j
                 if dist <= k:
                     cnt += 1
 
