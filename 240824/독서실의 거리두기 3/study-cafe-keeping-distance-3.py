@@ -1,28 +1,24 @@
 n = int(input())
 seats = list(map(int, list(input())))
 
-dist = []
+dist = 0
+star = None
 cnt = 0
 for i in range(n - 1):
     for j in range(i + 1, n):
         if seats[i] == 1 and seats[j] == 1:
-            dist.append(j - i - 1)
+            if dist < j - i:
+                dist = j - i
+                star = (i, j)
             break
 
-dist.sort(reverse=True)
+seats[(star[0] + star[1]) // 2] = 1
 
-if dist[0] == dist[1]:
-    dist.pop()
-    dist.append(dist[0] - 1)
-else:
-    temp = dist.pop()
-    dist.append(temp - 1)
-
-for i in range(n):
+ans = int(1e9)
+for i in range(n - 1):
     for j in range(i + 1, n):
         if seats[i] == 1 and seats[j] == 1:
-            dist.append(j - i - 1)
+            ans = min(ans, j - i)
             break
 
-dist.sort()
-print(dist[0])
+print(ans)
