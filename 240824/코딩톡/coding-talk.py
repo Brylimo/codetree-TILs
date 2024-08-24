@@ -29,10 +29,10 @@ for i in range(m, 0, -1):
 
     lasts.append(c)
 
-for i in range(n):
+for i in range(m - 1):
     c, u = talks[i]
 
-    for j in range(i + 1, n):
+    for j in range(i + 1, m):
         if talks[j][1] == u:
             people[j].append(c)
 
