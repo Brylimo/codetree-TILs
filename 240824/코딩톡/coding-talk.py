@@ -12,7 +12,7 @@ for _ in range(m):
 
     talks.append((c, u))
 
-people = [[] for _ in range(n)]
+people = [[] for _ in range(m)]
 lasts = []
 for i in range(m, 0, -1):
     c, u = talks[i - 1]
