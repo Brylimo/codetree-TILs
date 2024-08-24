@@ -5,7 +5,7 @@ talks = []
 overall = []
 for i in range(n):
     overall.append(chr(ord('A') + i))
-    
+
 for _ in range(m):
     c, u = input().split()
     u = int(u)
@@ -28,6 +28,14 @@ for i in range(m, 0, -1):
         people[i - 1].append(lasts[j])
 
     lasts.append(c)
+
+for i in range(n):
+    c, u = talks[i]
+
+    for j in range(i + 1, n):
+        if talks[j][1] == u:
+            people[j].append(c)
+
 
 overall = set(overall)
 target = set(people[p - 1])
