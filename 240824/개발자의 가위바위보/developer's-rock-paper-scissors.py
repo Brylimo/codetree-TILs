@@ -12,19 +12,19 @@ for i in range(3):
             if i == j or i == k or j == k:
                 continue
 
-            rsp = [i, j, k]
+            rsp = [i + 1, j + 1, k + 1]
 
             victory = 0
             for u in range(n):
                 r1, r2 = seq[u]
 
-                if r1 == 1 and r2 == 3:
+                if rsp[r1 - 1] == 1 and rsp[r2 - 1] == 3:
                     victory += 1
-                elif r1 == 2 and r2 == 1:
+                elif rsp[r1 - 1] == 2 and rsp[r2 - 1] == 1:
                     victory += 1
-                elif r1 == 3 and r2 == 2:
+                elif rsp[r1 - 1] == 3 and rsp[r2 - 1] == 2:
                     victory += 1
 
-                ans = max(ans, victory)
+            ans = max(ans, victory)
 
 print(ans)
