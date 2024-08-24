@@ -4,17 +4,17 @@ array = list(map(int, input().split()))
 array.sort()
 
 ans = 0
-for i in range(n):
+for i in range(101):
     cnt = 0
     temp = l
     for j in range(n):
-        if array[j] >= array[i]:
+        if array[j] >= i:
             cnt += 1
-        elif temp > 0 and array[j] + 1 >= array[i]:
+        elif temp > 0 and array[j] + 1 >= i:
             cnt += 1
             temp -= 1
 
-    if cnt >= array[i]:
-        ans = max(ans, array[i])
+    if cnt >= i:
+        ans = max(ans, i)
 
 print(ans)
