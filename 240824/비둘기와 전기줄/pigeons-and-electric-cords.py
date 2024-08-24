@@ -8,6 +8,7 @@ for _ in range(n):
     if birds[bird] == -1:
         birds[bird] = loc
     elif birds[bird] != loc:
+        birds[bird] = loc
         cnt += 1
 
 print(cnt)
