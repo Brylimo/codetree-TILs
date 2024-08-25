@@ -7,7 +7,7 @@ total = sum(array)
 while True:
     loc = None
     max_cnt = 0
-    block_size = 2*m + 1
+    block_size = min(2*m + 1, n)
     for i in range(n - block_size + 1):
         overlap = 0
         for j in range(block_size):
