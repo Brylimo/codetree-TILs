@@ -17,14 +17,16 @@ for i in range(n):
         for j in range(n):
             if array[j] == alphas[i]:
                 if j > i:
-                    while array[i] != alphas[i]:
-                        array[j], array[j - 1] = array[j - 1], array[j]
+                    idx = j
+                    while idx >= 0 and array[i] != alphas[i]:
+                        array[idx], array[idx - 1] = array[idx - 1], array[idx]
+                        idx -= 1
                         cnt += 1
-                        break
                 else:
-                    while array[i] != alphas[i]:
-                        array[j], array[j + 1] = array[j + 1], array[j]
+                    while idx < n and array[i] != alphas[i]:
+                        array[idx], array[idx + 1] = array[idx + 1], array[idx]
+                        idx += 1
                         cnt += 1
-                        break
+                break
 
 print(cnt)
