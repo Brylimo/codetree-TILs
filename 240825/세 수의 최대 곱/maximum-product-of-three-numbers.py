@@ -33,4 +33,7 @@ if len(pluss) >= 3:
 if len(minuss) >= 2 and len(pluss) >= 1:
     ans = max(ans, minuss[0] * minuss[1] * pluss[0])
 
+if len(pluss) >= 2 and len(minuss) >= 1:
+    ans = max(ans, pluss[-1] * pluss[-2] * minuss[-1])
+
 print(ans)
