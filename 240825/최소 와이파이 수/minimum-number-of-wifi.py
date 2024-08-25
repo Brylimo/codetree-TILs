@@ -25,7 +25,8 @@ while True:
             for i in range(block_size):
                 array[loc + i] = 0
     else:
-        ans += 1
+        if max_cnt > 0:
+            ans += 1
         break
 
 print(ans)
