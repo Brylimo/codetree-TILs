@@ -1,32 +1,16 @@
-n, m = map(int, input().split())
-array = list(map(int, input().split()))
+# 변수 선언 및 입력:
+n, m = tuple(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-ans = 0
-cnt = 0
-total = sum(array)
-while True:
-    loc = None
-    max_cnt = 0
-    block_size = min(2*m + 1, n)
-    for i in range(n - block_size + 1):
-        overlap = 0
-        for j in range(block_size):
-            if array[i + j] == 1:
-                overlap += 1
-
-        if max_cnt <= overlap:
-            max_cnt = overlap
-            loc = i
-
-    cnt += max_cnt
-    if cnt != total:
-        ans += 1
-        if loc is not None:
-            for i in range(block_size):
-                array[loc + i] = 0
+# 사람이 살고 있는 곳이 나오면
+# 와이파이를 해당 위치로부터 오른쪽으로 m만큼 떨어진 곳에 놓은 뒤,
+# 2m만큼 떨어진 곳에서 시작하여 다시 탐색을 진행합니다.
+cnt, i = 0, 0
+while i < n:
+    if arr[i] == 1:
+        cnt += 1
+        i += 2 * m + 1
     else:
-        if max_cnt > 0:
-            ans += 1
-        break
+        i += 1
 
-print(ans)
+print(cnt)
