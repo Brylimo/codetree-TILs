@@ -15,18 +15,19 @@ for i in range(n):
 
 ans = 0
 # case 1. 가장 긴 거리의 가운데
-seats[(max_point[0] + max_point[1]) // 2] = 1
+if max_point is not None:
+    seats[(max_point[0] + max_point[1]) // 2] = 1
 
-temp = sys.maxsize
-for i in range(n):
-    for j in range(i + 1, n):
-        if seats[i] == 1 and seats[j] == 1:
-            temp = min(temp, j - i)
-            break
+    temp = sys.maxsize
+    for i in range(n):
+        for j in range(i + 1, n):
+            if seats[i] == 1 and seats[j] == 1:
+                temp = min(temp, j - i)
+                break
 
-ans = max(ans, temp)
+    ans = max(ans, temp)
 
-seats[(max_point[0] + max_point[1]) // 2] = 0
+    seats[(max_point[0] + max_point[1]) // 2] = 0
 # case 2. 왼쪽 끝에 1 추가
 if seats[0] != 1:
     seats[0] = 1
