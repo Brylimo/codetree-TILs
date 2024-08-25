@@ -31,7 +31,7 @@ for _ in range(n):
     elif a > b and a > c:
         temp.append('a')
     elif b > a and b > c:
-        temp.append('a')
+        temp.append('b')
     elif c > b and c > a:
         temp.append('c')
 
