@@ -14,7 +14,7 @@ while True:
             if array[i + j] == 1:
                 overlap += 1
 
-        if max_cnt < overlap:
+        if max_cnt <= overlap:
             max_cnt = overlap
             loc = i
 
