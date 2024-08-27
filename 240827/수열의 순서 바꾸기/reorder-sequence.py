@@ -24,7 +24,7 @@ while True:
             idx = n - 1
             break
         
-        if min_val > array[i] - target:
+        if array[i] > target and min_val > array[i] - target:
             min_val = array[i] - target
             idx = i
 
