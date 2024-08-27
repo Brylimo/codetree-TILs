@@ -22,11 +22,10 @@ def draw_diamond(x, y):
     value += grid[x][y]
 
     cur_level = 0
-    cnt = 0
+    cnt = 1
     while queue:
         ax, ay, level = queue.popleft()
 
-        cnt += 1
         if level != cur_level:
             cur_level = level
             if cnt < value * m:
@@ -37,14 +36,15 @@ def draw_diamond(x, y):
             ny = ay + dy[i]
 
             if nx < 0 or nx >= n or ny < 0 or ny >= n:
-                break
+                cnt += 1
+                continue
 
             if not visited[nx][ny]:
                 visited[nx][ny] = True
                 value += grid[nx][ny]
+                cnt += 1
 
-                if 2 * level + 1 <= n:
-                    queue.append((nx, ny, level + 1))
+                queue.append((nx, ny, level + 1))
         
 for i in range(n):
     for j in range(n):
