@@ -28,7 +28,7 @@ def draw_diamond(x, y):
 
         if level != cur_level:
             cur_level = level
-            if cnt < value * m:
+            if cnt <= value * m:
                 ans = max(ans, value)
 
         for i in range(4):
