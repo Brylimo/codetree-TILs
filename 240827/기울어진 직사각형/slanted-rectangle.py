@@ -16,12 +16,14 @@ def draw_rect(x, y):
     sum_val = 0
     ax, ay = x, y
 
+    flag = True
     while True:
         nx = ax + dx[dir]
         ny = ay + dy[dir]
 
         if nx < 0 or nx >= n or ny < 0 or ny >= n:
             if check[dir] == 0:
+                flag = False
                 break
             dir += 1
             if dir == 4:
@@ -34,7 +36,9 @@ def draw_rect(x, y):
 
         ax, ay = nx, ny
 
-    ans = max(ans, sum_val)
+    if flag:
+        flag = False
+        ans = max(ans, sum_val)
 
 for i in range(n):
     for j in range(n):
