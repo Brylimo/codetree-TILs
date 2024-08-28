@@ -20,7 +20,7 @@ def encode():
     return len(alter)
 
 ans = sys.maxsize
-for _ in range(n - 1):
+for _ in range(n):
     ans = min(ans, encode())
 
     temp = string[-1]
