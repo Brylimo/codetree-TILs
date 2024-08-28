@@ -5,13 +5,19 @@ for _ in range(n):
     bombs.append(int(input()))
 
 def is_not_done():
-    return any([
-        bombs[i] == bombs[i + 1]
-        for i in range(n - 1)
-        if bombs[i] != 0
-    ])
+    max_cnt = 0
 
-length = 0
+    cnt = 1
+    for i in range(n - 1):
+        if bombs[i] != 0 and bombs[i] == bombs[i + 1]:
+            cnt += 1
+        max_cnt = max(max_cnt, cnt)
+
+    if max_cnt >= m:
+        return True
+    else:
+        return False
+length = n
 while is_not_done():
     cnt = 1
     cur = 0
