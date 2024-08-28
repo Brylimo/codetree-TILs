@@ -6,7 +6,7 @@ grid = [
 
 r, c = map(int, input().split())
 
-num = grid[r][c]
+num = grid[r - 1][c - 1]
 
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
