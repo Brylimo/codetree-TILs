@@ -1,55 +1,47 @@
-n, m = map(int, input().split())
+# 변수 선언 및 입력
+n, m = tuple(map(int, input().split()))
+numbers = [
+    int(input())
+    for _ in range(n)
+]
 
-bombs = []
-for _ in range(n):
-    bombs.append(int(input()))
 
-def is_not_done():
-    max_cnt = 0
+# 주어진 시작점에 대하여
+# 부분 수열의 끝 위치를 반환합니다.
+def get_end_idx_of_explosion(start_idx, curr_num):
+    for end_idx in range(start_idx + 1, len(numbers)):
+        if numbers[end_idx] != curr_num:
+            return end_idx - 1
+        
+    return len(numbers) - 1
 
-    cnt = 1
-    for i in range(n - 1):
-        if bombs[i] != 0 and bombs[i] == bombs[i + 1]:
-            cnt += 1
-        max_cnt = max(max_cnt, cnt)
 
-    if max_cnt >= m:
-        return True
-    else:
-        return False
-length = n
-while is_not_done():
-    cnt = 1
-    cur = 0
-    for i in range(1, n):
-        if bombs[cur] == bombs[i]:
-            cnt += 1
-        else:
-            if cnt >= m:
-                for j in range(cur, i):
-                    bombs[j] = 0
-            
-            cur = i
-            cnt = 1
-
-    if cnt > 1 and cnt + 1 >= m:
-        for j in range(cur, n):
-            bombs[j] = 0
-
-    end_of_temp = 0
-    temp = [0] * n
-    for i in range(n):
-        if bombs[i] != 0:
-            temp[end_of_temp] = bombs[i]
-            end_of_temp += 1
-
-    length = end_of_temp
-    for i in range(n):
-        bombs[i] = temp[i]
-
-print(length)
-for i in range(n):
-    if bombs[i] == 0:
+while True:
+    did_explode = False
+    
+    for curr_idx, number in enumerate(numbers):
+        # 각 위치마다 그 뒤로 폭탄이 m개 이상 있는지 확인합니다.
+			
+		# 이미 터지기로 예정되어있는 폭탄은 패스합니다.
+        if number == 0:
+            continue
+        # curr_idx로부터 연속하여 같은 숫자를 갖는 폭탄 중 
+		# 가장 마지막 위치를 찾아 반환합니다.
+        end_idx = get_end_idx_of_explosion(curr_idx, number)
+        
+        if end_idx - curr_idx + 1 >= m:
+            # 연속한 숫자의 개수가 m개 이상인 경우 폭탄이 터졌음을 기록해줍니다.
+            # 터져야 할 폭탄들에 대해 터졌다는 의미로 0을 채워줍니다.
+            numbers[curr_idx:end_idx + 1] = [0] * (end_idx - curr_idx + 1)
+            did_explode = True
+        
+    # 폭탄이 터진 이후의 결과를 계산하여 반영해줍니다.
+    numbers = list(filter(lambda x: x > 0, numbers))
+    
+    # 더 이상 폭탄이 터지지 않는다면 종료합니다.
+    if not did_explode:
         break
-    else:
-        print(bombs[i])
+
+print(len(numbers))
+for number in numbers:
+    print(number)
