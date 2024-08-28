@@ -24,7 +24,7 @@ for i in range(end_of_temp):
     if end_of_temp - e2 <= i <= end_of_temp - s2:
         pass
     else:
-        temp2[end_of_temp2] = blocks[i]
+        temp2[end_of_temp2] = temp[i]
         end_of_temp2 += 1
 
 print(end_of_temp2)
