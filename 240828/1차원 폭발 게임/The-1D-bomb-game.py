@@ -26,6 +26,10 @@ while is_not_done():
             cur = i
             cnt = 1
 
+    if cnt > 1 and cnt + 1 >= m:
+        for j in range(cur, n):
+            bombs[j] = 0
+
     end_of_temp = 0
     temp = [0] * n
     for i in range(n):
@@ -36,7 +40,6 @@ while is_not_done():
     length = end_of_temp
     for i in range(n):
         bombs[i] = temp[i]
-
 
 print(length)
 for i in range(n):
