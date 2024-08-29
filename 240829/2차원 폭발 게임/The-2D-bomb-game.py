@@ -70,8 +70,9 @@ def bomb():
 
         if current:
             if bomb_cnt < m:
-                next_grid[end_of_temp][j] = current
-                end_of_temp -= 1
+                for k in range(bomb_cnt):
+                    next_grid[end_of_temp][j] = current
+                    end_of_temp -= 1
 
     for i in range(n):
         for j in range(n):
