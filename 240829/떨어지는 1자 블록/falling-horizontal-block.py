@@ -4,8 +4,8 @@ grid = [
     for _ in range(n)
 ]
 
+flag = False
 for i in range(1, n):
-    flag = False
     for j in range(k - 1, k + m - 1):
         if grid[i][j] == 1:
             flag = True
@@ -19,6 +19,10 @@ for i in range(1, n):
 if n == 1:
     for j in range(k - 1, k + m - 1):
         grid[0][j] = 1
+
+if not flag:
+   for j in range(k - 1, k + m - 1):
+        grid[n - 1][j] = 1 
 
 for i in range(n):
     for j in range(n):
