@@ -16,6 +16,9 @@ for i in range(1, n):
             grid[i - 1][j] = 1
         break
         
+if n == 1:
+    for j in range(k - 1, k + m - 1):
+        grid[0][j] = 1
 
 for i in range(n):
     for j in range(n):
