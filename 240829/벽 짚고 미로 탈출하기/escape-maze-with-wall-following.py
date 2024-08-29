@@ -23,13 +23,14 @@ def move(x, y):
 
     visited[x][y][dir] = True
     tick = 0
+
     while True:
         nx = x + dx[dir]
         ny = y + dy[dir]
 
         if in_range(nx, ny):
             if grid[nx][ny] != '#' and not visited[nx][ny][dir]:
-                if in_range(nx + 1, ny) and grid[nx + 1][ny] == '#':
+                if in_range(nx + dx[(dir + 1) % 4], ny + dy[(dir + 1) % 4]) and grid[nx + dx[(dir + 1) % 4]][ny + dy[(dir + 1) % 4]] == '#':
                     x, y = nx, ny
                     visited[x][y][dir] = True
                 else:
