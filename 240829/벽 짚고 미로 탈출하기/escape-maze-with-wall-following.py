@@ -36,12 +36,15 @@ def move(x, y):
                     x, y = nx, ny
                     visited[x][y][dir] = True
                     dir = (dir + 1) % 4
-
+                    visited[x][y][dir] = True
                 tick += 1
             elif visited[nx][ny][dir]:
                 return -1
             else:
                 dir = (dir + 3) % 4
+                if visited[x][y][dir]:
+                    return -1
+                visited[x][y][dir] = True
         else:
             tick += 1
             break
