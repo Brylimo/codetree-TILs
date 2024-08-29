@@ -5,7 +5,7 @@ grid = [
     for _ in range(n)
 ]
 visited = [
-    [False for _ in range(n)]
+    [[False] * 4 for _ in range(n)]
     for _ in range(n)
 ]
 
@@ -21,23 +21,24 @@ def move(x, y):
 
     dir = 0
 
-    visited[x][y] = True
+    visited[x][y][dir] = True
     tick = 0
     while True:
         nx = x + dx[dir]
         ny = y + dy[dir]
 
         if in_range(nx, ny):
-            if grid[nx][ny] != '#' and not visited[nx][ny]:
+            if grid[nx][ny] != '#' and not visited[nx][ny][dir]:
                 if in_range(nx + 1, ny) and grid[nx + 1][ny] == '#':
                     x, y = nx, ny
+                    visited[x][y][dir] = True
                 else:
                     x, y = nx, ny
+                    visited[x][y][dir] = True
                     dir = (dir + 1) % 4
 
-                visited[x][y] = True
                 tick += 1
-            elif visited[nx][ny]:
+            elif visited[nx][ny][dir]:
                 return -1
             else:
                 dir = (dir + 3) % 4
