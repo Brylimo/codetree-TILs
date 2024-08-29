@@ -9,7 +9,7 @@ def simulate(start):
     x, y = -1, -1
 
     # 시작 지점 초기화
-    remnant = start % 4
+    remnant = start % n
     # down
     if dir == 0:
         x = 0
@@ -23,25 +23,29 @@ def simulate(start):
     # up
     elif dir == 2:
         x = n - 1
-        y = n - remnant
+        y = n - remnant - 1
 
     # right
     elif dir == 3:
-        x = n - remnant
+        x = n - remnant - 1
         y = 0
 
     dx = [1, 0, -1, 0]
     dy = [0, -1, 0, 1]
 
-    tick = 1
+    tick = 0
     while True:
-        nx = x + dx[dir]
-        ny = y + dy[dir]
+        if tick > 0:
+            nx = x + dx[dir]
+            ny = y + dy[dir]
 
-        # 종료 조건
-        if nx < 0 or nx >= n or ny < 0 or ny >= n:
-            tick += 1
-            break
+            # 종료 조건
+            if nx < 0 or nx >= n or ny < 0 or ny >= n:
+                tick += 1
+                break
+        else:
+            nx = x
+            ny = y
 
         # / 모양
         if grid[nx][ny] == 1:    
@@ -49,30 +53,16 @@ def simulate(start):
                 dir = (dir + 1) % 4
             else:
                 dir = (dir + 3) % 4
-            
-            nx = nx + dx[dir]
-            ny = ny + dy[dir]
 
-            if nx < 0 or nx >= n or ny < 0 or ny >= n:
-                tick += 1
-                break
-
-            tick += 2
+            tick += 1
         # \ 모양
         elif grid[nx][ny] == 2:    
             if dir == 0 or dir == 2:
                 dir = (dir + 3) % 4
             else:
                 dir = (dir + 1) % 4
-            
-            nx = nx + dx[dir]
-            ny = ny + dy[dir]
 
-            if nx < 0 or nx >= n or ny < 0 or ny >= n:
-                tick += 1
-                break
-
-            tick += 2
+            tick += 1
         # 그냥 직진
         else:
             tick += 1
