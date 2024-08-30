@@ -10,6 +10,10 @@ for _ in range(t):
         [-1 for _ in range(n)]
         for _ in range(n)
     ]
+    count_grid = [
+        [0 for _ in range(n)]
+        for _ in range(n)
+    ]
 
     dir_dict = {
         "U": 0,
@@ -17,6 +21,10 @@ for _ in range(t):
         "L": 2,
         "D": 3,
     }
+
+    def show():
+        for i in range(n):
+            print(grid[i])
 
     def move(x, y):
         dx = [-1, 0, 0, 1]
@@ -31,19 +39,18 @@ for _ in range(t):
             # 방향을 바꿈
             dir = 3 - dir
             next_grid[x][y] = dir
+            count_grid[x][y] += 1
             return
 
-        # 이미 구슬이 존재하면 삭제
-        if next_grid[nx][ny] != -1:
-            next_grid[nx][ny] = -1
-        else:
-            next_grid[nx][ny] = dir
+        next_grid[nx][ny] = dir
+        count_grid[nx][ny] += 1
 
     def move_all():
         # next_grid 초기화
         for i in range(n):
             for j in range(n):
                 next_grid[i][j] = -1
+                count_grid[i][j] = 0
 
         for i in range(n):
             for j in range(n):
@@ -52,7 +59,10 @@ for _ in range(t):
 
         for i in range(n):
             for j in range(n):
-                grid[i][j] = next_grid[i][j]
+                if count_grid[i][j] <= 1:
+                    grid[i][j] = next_grid[i][j]
+                else:
+                    grid[i][j] = -1
 
     # 구슬 초기화
     for _ in range(m):
