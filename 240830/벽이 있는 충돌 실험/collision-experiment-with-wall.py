@@ -69,7 +69,7 @@ for _ in range(t):
         x, y, d = input().split()
         grid[int(x) - 1][int(y) - 1] = dir_dict[d]
     
-    for _ in range(n ** 2):
+    for _ in range(n):
         move_all()
 
     ans = sum([
