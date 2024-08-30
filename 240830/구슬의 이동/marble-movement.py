@@ -41,6 +41,7 @@ def move(marble):
 
     # 도착점에 구슬 추가
     grid[cur_x][cur_y].append((v, num))
+    marbles.append((num, cur_x, cur_y, dir, v))
 
 def remove_marbles():
     for i in range(n):
@@ -51,7 +52,9 @@ def remove_marbles():
                     grid[i][j] = grid[i][j][:k]
 
 def move_all():
-    for marble in marbles:
+    marbel_len = len(marbles)
+    for _ in range(marbel_len):
+        marble = marbles.pop(0)
         move(marble)
 
     # 지워야하는 구슬 제거
