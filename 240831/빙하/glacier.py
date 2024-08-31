@@ -66,24 +66,27 @@ def melt(x, y):
                     prev += 1
                 visited[nx][ny] = tick
                 grid[nx][ny] = -1
-
+        
 def show():
     for i in range(n):
-        print(visited[i])
+        print(grid[i])
     print()
 
 # 가장자리 모두 방문처리
 check_corners(0, 0)
 
 while True:
-    total = sum([
-        grid[i][j]
-        for i in range(n)
-        for j in range(m)
-    ])
+    total = 0
+    glacier_cnt = 0
+
+    for i in range(n):
+        for j in range(m):
+            if grid[i][j] != -1:
+                glacier_cnt += grid[i][j]
+            total += grid[i][j]
 
     # 종료 조건
-    if total == -(n*m):
+    if total == -(n*m) or glacier_cnt == 0:
         break
 
     tick += 1
