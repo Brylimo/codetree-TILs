@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(20000)
 
 n = int(input())
 grid = [
@@ -38,8 +38,9 @@ for num in range(1, 101):
             visited[i][j] = False
 
     for i in range(n):
-        block_size = 0
         for j in range(n):
+            block_size = 0
+            
             if not visited[i][j] and grid[i][j] == num:
                 visited[i][j] = True
                 dfs(num, i, j)
