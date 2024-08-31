@@ -41,4 +41,4 @@ for h in range(1, 101):
     array.append((-safe_cnt, h))
 
 array.sort()
-print(-array[0][0], array[0][1])
+print(array[0][1], -array[0][0])
