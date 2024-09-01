@@ -40,4 +40,7 @@ visited[0][0] = True
 
 bfs(0, 0)
 
-print(step[n - 1][m - 1])
+if not step[n - 1][m - 1]:
+    print(-1)
+else:
+    print(step[n - 1][m - 1])
