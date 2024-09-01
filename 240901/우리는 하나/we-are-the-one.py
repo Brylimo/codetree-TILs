@@ -43,13 +43,14 @@ def move():
     for i in range(n):
         for j in range(n):
             visited[i][j] = False
-            
+
     # 큐에 도시들을 집어넣음
     for candidate in candidates:
         cx, cy = candidate
 
-        # 도시간 이동
-        bfs(cx, cy)
+        if not visited[cx][cy]:
+            # 도시간 이동
+            bfs(cx, cy)
 
     sum_val = sum([
         1
