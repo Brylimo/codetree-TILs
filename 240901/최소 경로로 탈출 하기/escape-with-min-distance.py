@@ -6,11 +6,11 @@ grid = [
     for _ in range(n)
 ]
 step = [
-    [0] * n
+    [0] * m
     for _ in range(n)
 ]
 visited = [
-    [False] * n
+    [False] * m
     for _ in range(n)
 ]
 
