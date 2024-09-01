@@ -37,4 +37,7 @@ def bfs(x, y):
 
 bfs(r1 - 1, c1 - 1)
 
-print(step[r2 - 1][c2 - 1])
+if visited[r2 - 1][c2 - 1]:
+    print(step[r2 - 1][c2 - 1])
+else:
+    print(-1)
