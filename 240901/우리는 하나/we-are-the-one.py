@@ -70,7 +70,7 @@ candidates = []
 # backtracking으로 k 도시 선택(조합)
 def calc(i, j, cnt):
     # 종료조건
-    if i == n - 1 and j == n - 1:
+    if i == n:
         if cnt == k:
             move()
         return
