@@ -4,15 +4,18 @@ grid = [
     for _ in range(n)
 ]
 dp = [
-    [1] * m
+    [0] * m
     for _ in range(n)
 ]
 
-for i in range(n):
-    for j in range(m):
-
+dp[0][0] = 1
+for i in range(1, n):
+    for j in range(1, m):
         for a in range(i):
             for b in range(j):
+                if dp[a][b] == 0:
+                    continue
+
                 if grid[a][b] < grid[i][j]:
                     dp[i][j] = max(dp[i][j], dp[a][b] + 1)
 
