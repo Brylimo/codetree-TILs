@@ -38,6 +38,9 @@ for i in range(1, n):
         if up_max - up_min < left_max - left_min:
             dp[i][j][0] = up_min
             dp[i][j][1] = up_max
+        elif up_max - up_min == left_max - left_min:
+            dp[i][j][0] = up_min
+            dp[i][j][1] = up_max
         else:
             dp[i][j][0] = left_min
             dp[i][j][1] = left_max
