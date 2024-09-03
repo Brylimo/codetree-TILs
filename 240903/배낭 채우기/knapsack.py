@@ -18,4 +18,4 @@ for j in range(n):
 
             dp[i] = max(dp[i], dp[i - jwerlies[j][0]] + jwerlies[j][1])
 
-print(dp[m])
+print(max(dp))
