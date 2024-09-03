@@ -2,7 +2,7 @@ n = int(input())
 nums = list(map(int, input().split()))
 
 dp = [
-    [0] * 2
+    [1] * 2
     for _ in range(n)
 ]
 
@@ -16,6 +16,10 @@ for i in range(n):
             dp[i][0] = max(dp[i][0], dp[j][0] + 1)
         elif nums[j] > nums[i]:
             dp[i][1] = max(dp[i][1], dp[j][0] + 1, dp[j][1] + 1)
+
+def show():
+    for i in range(n):
+        print(dp[i])
 
 print(max([
     dp[i][j]
