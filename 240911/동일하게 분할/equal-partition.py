@@ -16,7 +16,7 @@ for j in range(n):
             
             dp[i] = 1
 
-for i in range(total + 1):
+for i in range(total):
     other = total - dp[i]
     if other == i:
         print("Yes")
