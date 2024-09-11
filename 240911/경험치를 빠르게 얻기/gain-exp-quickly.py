@@ -23,4 +23,11 @@ for j in range(n):
 
             dp[i] = min(dp[i], dp[i - quests[j][0]] + quests[j][1])
 
-print(min(dp[m:]))
+if len(dp) > m:
+    ans = min(dp[m:])
+    if ans == INT_MAX:
+        print(-1)
+    else:
+        print(ans)
+else:
+    print(-1)
