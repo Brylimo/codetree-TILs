@@ -17,9 +17,10 @@ for j in range(n):
             dp[i] = 1
 
 for i in range(total):
-    other = total - i
-    if other == i:
-        print("Yes")
-        sys.exit(0)
+    if dp[i] == 1:
+        other = total - i
+        if other == i:
+            print("Yes")
+            sys.exit(0)
         
 print("No")
