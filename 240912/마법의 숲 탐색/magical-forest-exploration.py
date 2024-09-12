@@ -56,8 +56,9 @@ def get_next_golem_left(x, y):
 
         if nx < 0 or nx >= r or ny < 0 or ny >= c:
             if i == 2 or i == 4:
-                flag = False
-                break
+                if x >= 0:
+                    flag = False
+                    break
 
             continue
 
@@ -65,7 +66,7 @@ def get_next_golem_left(x, y):
             flag = False
             break
 
-    # print("left", flag, x, y)    
+    #print("left", flag, x, y)    
     return flag
 
 def get_next_golem_right(x, y):
@@ -82,8 +83,9 @@ def get_next_golem_right(x, y):
 
         if nx < 0 or nx >= r or ny < 0 or ny >= c:
             if i == 2 or i == 4:
-                flag = False
-                break
+                if x > 0:
+                    flag = False
+                    break
 
             continue
 
