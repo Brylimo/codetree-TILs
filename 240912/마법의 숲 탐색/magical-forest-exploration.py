@@ -32,6 +32,10 @@ def get_next_golem_down(x, y):
         ny = y + dy[i]
 
         if nx < 0 or nx >= r or ny < 0 or ny >= c:
+            if i == 2 or i == 4:
+                if x >= 0:
+                    flag = False
+                    break
             continue
 
         vtemp.append((nx, ny))
@@ -66,7 +70,7 @@ def get_next_golem_left(x, y):
             flag = False
             break
 
-    #print("left", flag, x, y)    
+    # print("left", flag, x, y)    
     return flag
 
 def get_next_golem_right(x, y):
@@ -83,7 +87,7 @@ def get_next_golem_right(x, y):
 
         if nx < 0 or nx >= r or ny < 0 or ny >= c:
             if i == 2 or i == 4:
-                if x > 0:
+                if x >= 0:
                     flag = False
                     break
 
@@ -168,6 +172,7 @@ def move(col, dir):
                         for j in range(c):
                             forest[i][j] = 0
                     
+                    # print()
                     return
 
                 # 골렘 이동
@@ -190,6 +195,7 @@ def move(col, dir):
             for i in range(r):
                 for j in range(c):
                     forest[i][j] = 0
+            # print()
             return
 
     # 골렘 이동
