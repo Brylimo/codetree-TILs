@@ -70,7 +70,7 @@ def explore():
                 # 값을 계산 집어넣음
                 calc(i, j, d)
 
-    cost, degree, x, y = heapq.heappop(heap)
+    cost, degree, y, x = heapq.heappop(heap)
     cost = -cost
 
     if cost == 0:
@@ -203,7 +203,7 @@ def calc(x, y, degree):
             if not visited[i][j]:
                 cost += bfs(i, j)
 
-    heapq.heappush(heap, (-cost, degree, x, y))
+    heapq.heappush(heap, (-cost, degree, y, x))
 
 def turn():
     ans = explore()
