@@ -116,7 +116,7 @@ def rotate_square(x, y, size):
             else:
                 # 같은 곳에 참가자가 2명 이상
                 iidx = square[sx][sy]
-                if iidx > 0:
+                if iidx > 10:
                     same_loc[iidx - 10].append(i)
 
     # show_square(square)
