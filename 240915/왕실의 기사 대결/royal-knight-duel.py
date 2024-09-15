@@ -10,11 +10,11 @@ knights = [
     for _ in range(l)
 ]
 next_knights = [
-    [0] * l 
+    [0] * l
     for _ in range(l)
 ]
 visited = [
-    [False] * l 
+    [False] * l
     for _ in range(l)
 ]
 
@@ -32,6 +32,10 @@ def show():
     for i in range(l):
         print(knights[i])
     print()
+
+def show_grid():
+    for i in range(l):
+        print(grid[i])
 
 def nshow():
     for i in range(l):
@@ -80,6 +84,9 @@ def can_go(queue, dir):
                 for i in range(kh):
                     for j in range(kw):
                         queue.append((kr + i, kc + j, ii))
+        else:
+            flag = False
+            break
 
     return flag
 
@@ -111,8 +118,6 @@ def knight_move(owner, dir):
                     visited[nx][ny] = True
                     if not visited[x][y]:
                         next_knights[x][y] = 0
-                else:
-                    alive[idx] = False
 
         if idx != owner:
             for i in range(h):
@@ -154,8 +159,6 @@ for _ in range(q):
 
     if alive[idx]:
         move(idx, d)
-
-    #show()
 
 ans = 0
 for i in range(1, n + 1):
