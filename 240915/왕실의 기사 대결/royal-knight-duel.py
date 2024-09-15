@@ -79,7 +79,8 @@ def can_go(queue, dir):
             if knights[nx][ny] != idx and knights[nx][ny] > 0:
                 ii = knights[nx][ny]
                 kr, kc, kh, kw = points[ii]
-                block_stack.append(ii)
+                if ii not in block_stack:
+                    block_stack.append(ii)
 
                 for i in range(kh):
                     for j in range(kw):
@@ -120,9 +121,9 @@ def knight_move(owner, dir):
                         next_knights[x][y] = 0
 
         if idx != owner:
-            for i in range(h):
-                for j in range(w):
-                    if grid[xx + i][yy + j] == 1:
+            for iii in range(h):
+                for jjj in range(w):
+                    if grid[xx + iii][yy + jjj] == 1:
                         stamina[idx] -= 1
 
             if stamina[idx] <= 0:
@@ -151,14 +152,20 @@ def move(idx, dir):
     block_stack.append(idx)
     if can_go(queue, dir):
         knight_move(idx, dir)
-    else:
-        block_stack = []
+
+    block_stack = []
 
 for _ in range(q):
     idx, d = map(int, input().split())
 
+    #print(alive)
     if alive[idx]:
         move(idx, d)
+
+    #print(idx, d)
+    #show_grid()
+    #print("t")
+    #show()
 
 ans = 0
 for i in range(1, n + 1):
