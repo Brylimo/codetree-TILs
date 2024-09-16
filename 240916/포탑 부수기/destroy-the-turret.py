@@ -34,12 +34,12 @@ plus_energy = n + m
 
 def show():
     for i in range(1, n + 1):
-        print(grid[i])
+        print(grid[i][1:])
     print()
 
 def show_tracker():
     for i in range(1, n + 1):
-        print(tracker[i])
+        print(tracker[i][1:])
     print()
 
 def is_inrange(x, y):
@@ -228,7 +228,7 @@ def bomb_attack():
             if grid[nx][ny] > 0:
                 injured[nx][ny] = True
 
-                aftermath = grid[nx][ny] - (s_energy // 2)
+                aftermath = grid[nx][ny] - ((s_energy + plus_energy) // 2)
                 if aftermath > 0:
                     grid[nx][ny] = aftermath
                 else:
@@ -246,12 +246,13 @@ def maintenance():
         for j in range(1, m + 1):
             if grid[i][j] > 0 and not injured[i][j]:
                 grid[i][j] += 1
-                injured[i][j] = False
+
+            injured[i][j] = False
 
 for i in range(1, n + 1):
     grid[i][1:] = map(int, input().split())
 
-for turn in range(k):
+for turn in range(1, k + 1):
     alive_cnt = 0
 
     # heap 초기화
@@ -263,8 +264,8 @@ for turn in range(k):
             if energy <= 0:
                 continue
 
-            heapq.heappush(weaks, (energy, -turn, -(i + j), -j, i, j))
-            heapq.heappush(strongs, (-energy, turn, (i + j), j, i, j))
+            heapq.heappush(weaks, (energy, -turns[i][j], -(i + j), -j, i, j))
+            heapq.heappush(strongs, (-energy, turns[i][j], (i + j), j, i, j))
 
             alive_cnt += 1
 
