@@ -40,6 +40,11 @@ for i in range(1, n + 1):
 basecamps.sort()
 time = 0
 
+def show():
+    for i in range(1, n + 1):
+        print(grid[i][1:])
+    print()
+
 def is_inrange(x, y):
     if 1 <= x <= n and 1 <= y <= n:
         return True
@@ -109,7 +114,7 @@ def bfs(cx, cy):
             if not is_inrange(nx, ny):
                 continue
 
-            if not visited[nx][ny]:
+            if not visited[nx][ny] and grid[nx][ny] != 2:
                 visited[nx][ny] = True
                 record[nx][ny] = record[x][y]
                 queue.append((nx, ny))
