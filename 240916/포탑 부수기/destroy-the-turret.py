@@ -3,24 +3,24 @@ from collections import deque
 
 n, m, k = map(int, input().split())
 grid = [
-    [0] * (n + 1)
-    for _ in range(m + 1)
+    [0] * (m + 1)
+    for _ in range(n + 1)
 ]
 visited = [
-    [False] * (n + 1)
-    for _ in range(m + 1)
+    [False] * (m + 1)
+    for _ in range(n + 1)
 ]
 tracker = [
-    [None] * (n + 1)
-    for _ in range(m + 1)
+    [None] * (m + 1)
+    for _ in range(n + 1)
 ]
 turns = [
-    [0] * (n + 1)
-    for _ in range(m + 1)
+    [0] * (m + 1)
+    for _ in range(n + 1)
 ]
 injured = [
-    [False] * (n + 1)
-    for _ in range(m + 1)
+    [False] * (m + 1)
+    for _ in range(n + 1)
 ]
 weaks = []
 strongs = []
