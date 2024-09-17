@@ -39,8 +39,13 @@ def pop_right():
         target.prev, target.next = None, None
 
 def insert_city(a):
-    connect(a, cities[pinned].next)
-    connect(cities[pinned], a)
+    a.prev = cities[pinned]
+    a.next = cities[pinned].next
+
+    connect(a, a.next)
+    connect(a.prev, a)
+
+    cities[a.data] = a
 
 for i in range(n - 1):
     connect(cities[array[i]], cities[array[i + 1]])
@@ -67,6 +72,7 @@ for _ in range(q):
 
     if node is not None:
         if node.prev is not None and node.next is not None and node.prev.data == node.next.data:
+            print("hani")
             print(-1)
         elif node.prev is None or node.next is None:
             print(-1)
