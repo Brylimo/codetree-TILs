@@ -63,15 +63,8 @@ for _ in range(q):
         a = query[1]
 
         target = nodes[a]
-        if target.prev is None:
-            print(-1, end=" ")
-            print()
-            continue
+        if target.prev is None or target.next is None:
+            print(-1)
         else:
             print(target.prev.data, end=" ")
-
-        if target.next is None:
-            print(-1, end=" ")
-        else:
-            print(target.next.data, end=" ")
-        print()
+            print(target.next.data)
