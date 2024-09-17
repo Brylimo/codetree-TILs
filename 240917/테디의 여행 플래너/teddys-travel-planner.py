@@ -72,7 +72,6 @@ for _ in range(q):
 
     if node is not None:
         if node.prev is not None and node.next is not None and node.prev.data == node.next.data:
-            print("hani")
             print(-1)
         elif node.prev is None or node.next is None:
             print(-1)
