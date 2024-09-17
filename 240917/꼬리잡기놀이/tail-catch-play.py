@@ -35,6 +35,7 @@ def walk(x, y):
     visited[x][y] = True
     queue.append((x, y))
 
+    remember = (-1, -1)
     while queue:
         ax, ay = queue.popleft()
         # 현재값
@@ -48,19 +49,26 @@ def walk(x, y):
                 continue
 
             # 팀의 다른 동료
-            if grid[nx][ny] == 2:
+            if not visited[nx][ny] and grid[nx][ny] == 2:
                 queue.append((nx, ny))
                 visited[nx][ny] = True
-            elif grid[nx][ny] == 3:
+            elif current != 1 and grid[nx][ny] == 3:
                 grid[ax][ay] = 3
                 grid[nx][ny] = 4
                 visited[nx][ny] = True
+            elif current == 1 and grid[nx][ny] == 3:
+                remember = (nx, ny)
+                visited[nx][ny] = True
+                grid[ax][ay] = 4
             # 이동해야할 칸
             elif grid[nx][ny] == 4:
                 visited[nx][ny] = True
                 grid[nx][ny] = current
                 if grid[ax][ay] != 3:
                     grid[ax][ay] = 4
+
+    if remember != (-1, -1):
+        grid[remember[0]][remember[1]] = 1
 
 def move():
     # 초기화
@@ -89,12 +97,14 @@ def check_line_idx(x, y):
     head = (-1, -1)
     tail = (-1, -1)
 
+    flag = False
     while queue:
         ax, ay = queue.popleft()
 
         if grid[ax][ay] == 1:
             idx = steps[ax][ay]
             head = (ax, ay)
+            flag = True
 
         if grid[ax][ay] == 3:
             tail = (ax, ay)
@@ -107,6 +117,13 @@ def check_line_idx(x, y):
                 continue
 
             if not visited[nx][ny] and 1 <= grid[nx][ny] <= 3:
+                if grid[nx][ny] == 1:
+                    flag = True
+
+                if grid[nx][ny] == 3 and not flag:
+                    tail = (ax, ay)
+                    continue
+
                 visited[nx][ny] = True
                 steps[nx][ny] = steps[ax][ay] + 1
                 queue.append((nx, ny))
