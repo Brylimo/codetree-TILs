@@ -62,6 +62,7 @@ def thief_move():
         dist = get_distance(cx, cy, x, y)
 
         if dist > 3:
+            tmap[x][y].append(i)
             continue
 
         nx = x + dx[dir]
@@ -79,11 +80,16 @@ def thief_move():
             if not (nx == cx and ny == cy):
                 thief_x[i] = nx
                 thief_y[i] = ny
+            else:
+                tmap[x][y].append(i)
+                thief_dir[i] = dir
+                continue
 
             thief_dir[i] = dir
         else:
             # 술레가 있음
             if (nx == cx and ny == cy):
+                tmap[x][y].append(i)
                 continue
 
             thief_x[i] = nx
@@ -190,11 +196,13 @@ for turn in range(1, k + 1):
     # 정산
     points += turn * catch_cnt
 
+    #show_tmap()
+
     # 초기화
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             tmap[i][j] = []
 
-    #show_tmap()
+    #show()
 
 print(points)
