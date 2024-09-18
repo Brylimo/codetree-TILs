@@ -13,7 +13,7 @@ def connect(s, e):
 def pop(s):
     for i in range(1, m + 1):
         if lines[i] is not None and lines[i] == s:
-            lines[i] = None
+            lines[i] = s.next
             break
 
     connect(s.prev, s.next)
