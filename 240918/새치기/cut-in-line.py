@@ -30,12 +30,16 @@ def insert_prev(n, s):
 
 def pop_range_insert_prev(a, b, c):
     for i in range(1, m + 1):
-        if lines[i] is not None and lines[i] == c:
-            lines[i] = a
-            break
+        if lines[i] is not None and lines[i] == a:
+            lines[i] = b.next
     
     connect(a.prev, b.next)
     a.prev = b.next = None
+
+    for i in range(1, m + 1):
+        if lines[i] is not None and lines[i] == c:
+            lines[i] = a
+            break
 
     connect(c.prev, a)
     connect(b, c)
