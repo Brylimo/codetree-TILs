@@ -4,15 +4,15 @@ r, c, k = map(int, input().split())
 
 grid = [
     [0] * (c + 1)
-    for _ in range(r + 2)
+    for _ in range(r + 3)
 ]
 visited = [
     [False] * (c + 1)
-    for _ in range(r + 2)
+    for _ in range(r + 3)
 ]
 doors = [
     [False] * (c + 1)
-    for _ in range(r + 2)
+    for _ in range(r + 3)
 ]
 
 golem = (-1, -1)
@@ -27,17 +27,17 @@ mdx = [-1, 0, 1, 0]
 mdy = [0, 1, 0, -1]
 
 def show():
-    for i in range(2, r + 2):
+    for i in range(3, r + 3):
         print(grid[i][1:])
     print()
 
 def show_visited():
-    for i in range(2, r + 2):
+    for i in range(3, r + 3):
         print(visited[i][1:])
     print()
 
 def is_inrange(x, y):
-    if 0 <= x <= r + 1 and 1 <= y <= c:
+    if 0 <= x <= r + 2 and 1 <= y <= c:
         return True
 
     return False
@@ -45,12 +45,22 @@ def is_inrange(x, y):
 def put(idx):
     x, y = golem
 
-    for i in range(5):
-        nx = x + dx[i]
-        ny = y + dy[i]
+    if is_okay(idx, x, y):
+        for i in range(5):
+            nx = x + dx[i]
+            ny = y + dy[i]
 
-        if is_inrange(nx, ny):
-            grid[nx][ny] = idx
+            if is_inrange(nx, ny):
+                grid[nx][ny] = idx
+    else:
+        # 초기화
+        for i in range(r + 3):
+            for j in range(c + 1):
+                grid[i][j] = 0
+                doors[i][j] = False
+        return True
+
+    return False
 
 def is_okay(idx, cx, cy):
     flag = True
@@ -80,7 +90,7 @@ def golem_try(idx, bx, by, cx, cy):
 
         grid[nx][ny] = idx
 
-    if cx == r:
+    if cx == r + 1:
         done = True
 
     golem = (cx, cy)
@@ -110,7 +120,7 @@ def golem_move(idx):
                 # 출구 이동
                 exits[idx] = (exits[idx] + 3) % 4
             else:
-                # 서쪽으로 한칸 이동
+                # 동쪽으로 한칸 이동
                 nx = cx + mdx[1]
                 ny = cy + mdy[1]
 
@@ -125,9 +135,9 @@ def golem_move(idx):
                     done = True
 
     # 몸의 일부가 바깥에 있음
-    if golem[0] <= 2:
+    if golem[0] <= 3:
         # grid 초기화
-        for i in range(r + 2):
+        for i in range(r + 3):
             for j in range(c + 1):
                 grid[i][j] = 0
                 doors[i][j] = False
@@ -160,17 +170,17 @@ def elf_move(idx):
     sx, sy = golem
 
     # 초기화
-    for i in range(r + 2):
+    for i in range(r + 3):
         for j in range(c + 1):
             visited[i][j] = False
 
     bfs(idx, sx, sy)
 
     # 가장 남쪽 행 구해서 더함
-    for i in range(r + 1, -1, -1):
+    for i in range(r + 2, -1, -1):
         for j in range(c + 1):
             if visited[i][j]:
-                ans += i - 1
+                ans += i - 2
                 return
 
 query = []
@@ -186,6 +196,10 @@ for i in range(k):
 
     # 골렘 도착
     golem = (1, ci)
+    wiped = put(idx)
+
+    if wiped:
+        continue
 
     # 골렘 이동
     wiped = golem_move(idx)
