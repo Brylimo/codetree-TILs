@@ -125,7 +125,7 @@ def golem_move(idx):
                     done = True
 
     # 몸의 일부가 바깥에 있음
-    if golem[0] < 2:
+    if golem[0] <= 2:
         # grid 초기화
         for i in range(r + 2):
             for j in range(c + 1):
@@ -186,7 +186,6 @@ for i in range(k):
 
     # 골렘 도착
     golem = (1, ci)
-    put(idx)
 
     # 골렘 이동
     wiped = golem_move(idx)
