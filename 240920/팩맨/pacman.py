@@ -101,11 +101,15 @@ def calculate(idx, score):
         if not in_range(nx, ny):
             continue
 
+        flag = False
         if (nx, ny) in candidate:
-            continue
+            flag = True
 
         candidate.append((nx, ny))
-        calculate(idx + 1, score + len(grid[nx][ny]))
+        if flag:
+            calculate(idx + 1, score)
+        else:
+            calculate(idx + 1, score + len(grid[nx][ny]))
         candidate.pop()
 
 def packman_move():
