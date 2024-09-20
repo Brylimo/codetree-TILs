@@ -29,9 +29,8 @@ while pq:
             dist[i] = min_dist + s 
             heapq.heappush(pq, (min_dist + s, i))
 
-print(0)
 for i in range(1, n + 1):
-    if i == k:
-        continue
-
-    print(dist[i])
+    if dist[i] == INT_MAX:
+        print(-1)
+    else:
+        print(dist[i])
