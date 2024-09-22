@@ -45,7 +45,7 @@ def canGo(sx, sy, ox, oy, dir):
     if not in_range(ox, oy):
         return False
 
-    if (dir == 1 and 0 in wall[sx][sy]) or (dir == 2 and 1 in wall[sx][sy]):
+    if (dir == 1 and 0 in wall[sx][sy]) or (dir == 0 and 1 in wall[sx][sy]):
         return False
 
     if (dir == 3 and 0 in wall[ox][oy]) or (dir == 2 and 1 in wall[ox][oy]):
@@ -68,7 +68,7 @@ def wind_move(sx, sy, dir, st):
     ox2 = ox1 + dx[dir]
     oy2 = oy1 + dy[dir]
 
-    if canGo(sx, sy, ox1, oy1, ccw) and canGo(ox1, ox2, ox2, oy2, dir) and not visited[ox2][oy2]:
+    if canGo(sx, sy, ox1, oy1, ccw) and canGo(ox1, oy1, ox2, oy2, dir) and not visited[ox2][oy2]:
         coldness[ox2][oy2] += st
     else:
         left = True
@@ -110,9 +110,9 @@ def wind():
         ny = j + dy[dir]
 
         if in_range(nx, ny):
-            for i in range(n):
-                for j in range(n):
-                    visited[i][j] = False
+            for a in range(n):
+                for b in range(n):
+                    visited[a][b] = False
 
             coldness[nx][ny] += 5
             visited[nx][ny] = True
