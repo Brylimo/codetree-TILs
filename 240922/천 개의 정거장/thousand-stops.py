@@ -27,15 +27,21 @@ for k in range(len(first_bus)):
 while pq:
     min_dist, min_idx, bb = heapq.heappop(pq)
 
-    if min_dist != dist[min_idx]:
+    if min_idx != a and min_dist != dist[min_idx]:
         continue
 
     for target_idx, bus_num in graph[min_idx]:
         cost = INT_MAX
         if bb != bus_num:
-            cost = dist[min_idx] + fees[bus_num]
+            if min_idx == a:
+                cost = fees[bb] + fees[bus_num]
+            else:
+                cost = dist[min_idx] + fees[bus_num]
         else:
-            cost = dist[min_idx]
+            if min_idx == a:
+                cost = fees[bb]
+            else:
+                cost = dist[min_idx]
 
         if dist[target_idx] > cost:
             dist[target_idx] = cost
