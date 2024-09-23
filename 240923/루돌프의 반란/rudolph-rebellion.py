@@ -177,15 +177,15 @@ def santa_move(k):
             # 상호작용
             if grid[snx][sny] > 0 and grid[snx][sny] != i:
                 chain_reaction(snx, sny, dx[dir], dy[dir])
-                grid[snx][sny] = i
                 grid[sx][sy] = 0
+                grid[snx][sny] = i
                 santa_x[i] = snx
                 santa_y[i] = sny
 
                 continue
             else:
-                grid[snx][sny] = i
                 grid[sx][sy] = 0
+                grid[snx][sny] = i
                 santa_x[i] = snx
                 santa_y[i] = sny
 
@@ -208,7 +208,6 @@ def chain_reaction(x, y, ddx, ddy):
 
     # 산타를 만남
     if grid[nx][ny] > 0:
-        print("hi")
         chain_reaction(nx, ny, ddx, ddy)
 
     grid[nx][ny] = current_idx
