@@ -33,7 +33,7 @@ while pq:
 
         if dist[target_idx] > cost:
             dist[target_idx] = cost
-            heapq.heappush(pq, (target_idx, cost))
+            heapq.heappush(pq, (cost, target_idx))
 
 print(max([
     dist[i]
