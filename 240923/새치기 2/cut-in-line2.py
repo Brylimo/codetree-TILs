@@ -30,7 +30,7 @@ def insert_prev(a, b):
 def insert_range_prev(a, b, c):
     for i in range(1, m + 1):
         if lines_head[i] == a:
-            lines_head[i] = a.next
+            lines_head[i] = b.next
 
     connect(a.prev, b.next)
     a.prev = b.next = None
