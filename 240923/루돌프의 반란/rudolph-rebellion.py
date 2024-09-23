@@ -175,7 +175,7 @@ def santa_move(k):
                 continue
 
             # 상호작용
-            if grid[snx][sny] > 0:
+            if grid[snx][sny] > 0 and grid[snx][sny] != i:
                 chain_reaction(snx, sny, dx[dir], dy[dir])
                 grid[snx][sny] = i
                 grid[sx][sy] = 0
