@@ -11,7 +11,6 @@ for _ in range(n - 1):
     graph[a].append(b)
     graph[b].append(a)
 
-cnt = 0
 def traverse(x):
     global cnt
 
@@ -26,8 +25,7 @@ def traverse(x):
             is_leaf = False
 
     if is_leaf:
-        piece[x].append(cnt)
-        cnt += 1
+        piece[x].append(1)
 
 visited[root] = True
 traverse(root)
@@ -38,15 +36,14 @@ while True:
 
     for i in range(1, n + 1):
         if piece[i]: # 장기말이 있다면
-            p = piece[i].pop()
+            p = sum(piece[i])
+            piece[i] = []
             piece[parent[i]].append(p)
-            flag += 1
+            flag += p
             moved = True
-            break
 
     if piece[root]:
-        for k in range(len(piece[root])):
-            piece[root].pop()
+        piece[root] = []
 
     if not moved:
         break
