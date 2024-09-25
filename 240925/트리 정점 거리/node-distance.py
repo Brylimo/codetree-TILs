@@ -9,9 +9,6 @@ for _ in range(n - 1):
     graph[y].append((x, s))
 
 def traverse(x, y):
-    if x == y:
-        return
-
     for i, s in graph[x]:
         if not visited[i]:
             visited[i] = True
