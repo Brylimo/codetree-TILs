@@ -30,9 +30,9 @@ def bfs(x, y):
     blst = [(1, -x, y)]
     group_cnt = 1
     red_bomb_cnt = 0
+    color = grid[x][y]
     while queue:
         ax, ay = queue.popleft()
-        color = grid[ax][ay]
 
         for i in range(4):
             nx = ax + dx[i]
@@ -47,14 +47,19 @@ def bfs(x, y):
                     blst.append((10, -nx, ny))
                 else:
                     blst.append((1, -nx, ny))
-                    visited[nx][ny] = True
 
+                visited[nx][ny] = True
                 group_cnt += 1
 
                 queue.append((nx, ny))
 
     blst.sort()
     _, norm_x, norm_y = blst[0]
+
+    for i in range(n):
+        for j in range(n):
+            if visited[i][j] and grid[i][j] == 0:
+                visited[i][j] = False
 
     return (-group_cnt, red_bomb_cnt, norm_x, norm_y, blst)
 
@@ -102,6 +107,8 @@ def gravity():
             if grid[i][j] == -1:
                 next_grid[i][j] = grid[i][j]
                 idx = i
+                idx -= 1
+                continue
 
             if grid[i][j] != -2:
                 next_grid[idx][j] = grid[i][j]
@@ -116,10 +123,9 @@ def rotate_grid():
         for j in range(n):
             next_grid[i][j] = -2
 
-    for _ in range(3):
-        for i in range(n):
-            for j in range(n):
-                next_grid[i][j] = grid[j][n - i - 1]
+    for i in range(n):
+        for j in range(n):
+            next_grid[n - j - 1][i] = grid[i][j]
 
     for i in range(n):
         for j in range(n):
