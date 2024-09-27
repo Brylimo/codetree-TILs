@@ -124,7 +124,10 @@ def subtract():
         for j in range(n):
             if deal[i][j] != EMPTY:
                 d_cnt, num = deal[i][j]
-                deal[i][j] = (d_cnt - 1, num)
+                if d_cnt - 1 == 0:
+                    deal[i][j] = EMPTY
+                else:
+                    deal[i][j] = (d_cnt - 1, num)
 
 init()
 while not end():
