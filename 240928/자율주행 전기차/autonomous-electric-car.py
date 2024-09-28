@@ -161,6 +161,10 @@ def move_dist(id):
 
     dist = step[end_point[id][0]][end_point[id][1]]
 
+    if dist == 0:
+        c = -1
+        return
+
     tmap[start_point[id][0]][start_point[id][1]] = 0
     tmap[end_point[pid][0]][end_point[pid][1]] = TAXI
     c -= dist
