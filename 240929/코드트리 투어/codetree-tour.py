@@ -1,5 +1,6 @@
 from collections import defaultdict
 import heapq, sys
+
 INT_MAX = sys.maxsize
 
 EMPTY = (-1, -1)
@@ -10,6 +11,8 @@ graph = None
 start = 0
 dist = None
 items = defaultdict(lambda: EMPTY)
+queue = []
+
 
 def construct(elems):
     global n, m, graph, dist
@@ -24,15 +27,19 @@ def construct(elems):
         graph[v].append((u, w))
         graph[u].append((v, w))
 
+
 def create_item(elems):
     id, revenue, dest = elems[0], elems[1], elems[2]
     items[id] = (revenue, dest)
+
+    if dist[dest] != INT_MAX and dist[dest] <= revenue:
+        heapq.heappush(queue, (-(revenue - dist[dest]), id))
 
 def cancel_item(elems):
     id = elems[0]
 
     if items[id] != EMPTY:
-        items[id] = EMPTY
+        del items[id]
 
 def dijkstra(x):
     pq = []
@@ -52,27 +59,20 @@ def dijkstra(x):
                 dist[target_idx] = cost
                 heapq.heappush(pq, (cost, target_idx))
 
+
 def sell_item():
-    pq = []
-    for key, value in items.items():
-        if value == EMPTY:
-            continue
-
-        rev, dst = value[0], value[1]
-        cost = dist[dst]
-
-        if cost != INT_MAX and cost <= rev:
-            heapq.heappush(pq, (-(rev - cost), key))
-
-    if not pq:
+    if not queue:
         print(-1)
     else:
-        _, id = heapq.heappop(pq)
-        items[id] = EMPTY
-        print(id)
+        _, id = heapq.heappop(queue)
+        if id in items.keys():
+            del items[id]
+            print(id)
+        else:
+            print(-1)
 
 def change_start_point(elems):
-    global start
+    global start, queue
 
     s = elems[0]
     start = s
@@ -81,6 +81,18 @@ def change_start_point(elems):
         dist[i] = INT_MAX
 
     dijkstra(start)
+    queue = []
+
+    for key, value in items.items():
+        if value == EMPTY:
+            continue
+
+        rev, dst = value[0], value[1]
+        cst = dist[dst]
+
+        if cst != INT_MAX and cst <= rev:
+            heapq.heappush(queue, (-(rev - cst), key))
+
 
 for _ in range(q):
     query = list(map(int, input().split()))
