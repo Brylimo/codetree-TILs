@@ -38,7 +38,7 @@ def create_item(elems):
 def cancel_item(elems):
     id = elems[0]
 
-    if items[id] != EMPTY:
+    if id in items.keys():
         del items[id]
 
 def dijkstra(x):
