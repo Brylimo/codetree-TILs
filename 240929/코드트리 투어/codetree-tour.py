@@ -64,7 +64,13 @@ def sell_item():
     if not queue:
         print(-1)
     else:
-        _, id = heapq.heappop(queue)
+        id = -1
+        while queue:
+            _, id = heapq.heappop(queue)
+
+            if id in items.keys():
+                break
+
         if id in items.keys():
             del items[id]
             print(id)
