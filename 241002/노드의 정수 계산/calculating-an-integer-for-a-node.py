@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10 ** 5)
+
 n = int(input())
 
 parents = [-1] * (n + 1)
