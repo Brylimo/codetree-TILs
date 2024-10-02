@@ -37,11 +37,15 @@ def change_parent(inp):
 
     graph[parents[c1]].remove(c1)
     graph[parents[c2]].remove(c2)
+    graph[c1].remove(parents[c1])
+    graph[c2].remove(parents[c2])
 
     graph[parents[c1]].append(c2)
     graph[parents[c2]].append(c1)
+    graph[c2].append(parents[c1])
+    graph[c1].append(parents[c2])
 
-    parents[c1], parents[c2] = parents[c1], parents[c2]
+    parents[c1], parents[c2] = parents[c2], parents[c1]
 
 count = 0
 def dfs(x, depth):
