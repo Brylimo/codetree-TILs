@@ -5,7 +5,6 @@ tree = [-1] * (2 ** 20 - 1)
 authority = [0] * (n + 1)
 alarms = [True] * (n + 1)
 graph = [[] for _ in range(n + 1)]
-visited = [False] * (n + 1)
 
 def init(inp):
     global parents
@@ -15,7 +14,6 @@ def init(inp):
 
     for i in range(n):
         graph[parents[i + 1]].append(i + 1)
-        graph[i + 1].append(parents[i + 1])
 
         authority[i + 1] = authority_inp[i]
 
@@ -37,13 +35,9 @@ def change_parent(inp):
 
     graph[parents[c1]].remove(c1)
     graph[parents[c2]].remove(c2)
-    graph[c1].remove(parents[c1])
-    graph[c2].remove(parents[c2])
 
     graph[parents[c1]].append(c2)
     graph[parents[c2]].append(c1)
-    graph[c2].append(parents[c1])
-    graph[c1].append(parents[c2])
 
     parents[c1], parents[c2] = parents[c2], parents[c1]
 
@@ -52,13 +46,6 @@ def dfs(x, depth):
     global count
 
     for i in graph[x]:
-        if visited[i]:
-            continue
-
-        if parents[x] == i:
-            continue
-
-        visited[i] = True
         if not alarms[i]:
             continue
 
@@ -73,9 +60,7 @@ def browse(inp):
 
     c = inp[0]
     count = 0
-    visited = [False] * (n + 1)
 
-    visited[c] = True
     dfs(c, 1)
 
 for _ in range(q):
