@@ -23,7 +23,7 @@ public class Main {
             }
         }
 
-        double average = sum3 / cnt;
+        double average = (double)sum3 / cnt;
 
         System.out.printf("%d %.1f", sum, average);
     }
