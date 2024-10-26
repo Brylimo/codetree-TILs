@@ -23,6 +23,9 @@ public class Main {
                 cnt += 1;
             }
         }
+        if (maxVal < cnt) {
+            maxVal = cnt;
+        }
 
         System.out.println(maxVal);
     }
