@@ -8,7 +8,7 @@ public class Main {
         int n = sc.nextInt();
         int k = sc.nextInt();
 
-        int[] blocks = new int[n];
+        int[] blocks = new int[n + 1];
 
         for (int i = 0; i < k; i++) {
             int first = sc.nextInt();
@@ -20,7 +20,7 @@ public class Main {
         }
 
         int maxVal = Integer.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n + 1; i++) {
             if (maxVal < blocks[i]) {
                 maxVal = blocks[i];
             }
