@@ -18,6 +18,7 @@ public class Main {
             if (i == 0 || arr[i - 1] != arr[i]) {
                 if (maxVal < cnt) {
                     maxVal = cnt;
+                    cnt = 1;
                 }
             } else{
                 cnt += 1;
