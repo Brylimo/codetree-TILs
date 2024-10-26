@@ -8,6 +8,12 @@ public class Main {
         String str = sc.next();
         char target = sc.next().charAt(0);
 
-        System.out.print(str.indexOf(target));
+        int result = str.indexOf(target);
+
+        if (result == -1) {
+            System.out.print("No");
+        } else {
+            System.out.print(result);
+        }
     }
 }
