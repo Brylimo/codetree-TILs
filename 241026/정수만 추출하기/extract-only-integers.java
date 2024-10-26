@@ -8,7 +8,7 @@ public class Main {
         String a = sc.next();
         String b = sc.next();
 
-        String first = "0", second = "0";
+        String first = a, second = b;
         for (int i = 0; i < a.length(); i++) {
             if (!('0' <= a.charAt(i) && a.charAt(i) <= '9')) {
                 first = a.substring(0, i);
