@@ -14,11 +14,13 @@ public class Main {
 
             int idx = sc.nextInt();
 
-            if (idx > str.length()) {
+            if (idx >= str.length() || idx == str.length() - 1) {
                 idx = str.length() - 1;
-            }
 
-            str = str.substring(0, idx) + str.substring(idx + 1);
+                str = str.substring(0, idx);
+            } else {
+                str = str.substring(0, idx) + str.substring(idx + 1);
+            }
             System.out.println(str);
         }
     
