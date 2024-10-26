@@ -16,8 +16,8 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < a.length(); i++) {
-            if (!('0' <= a.charAt(i) && a.charAt(i) <= '9')) {
+        for (int i = 0; i < b.length(); i++) {
+            if (!('0' <= b.charAt(i) && b.charAt(i) <= '9')) {
                 second = b.substring(0, i);
                 break;
             }
