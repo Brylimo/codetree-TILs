@@ -17,8 +17,8 @@ public class Main {
             x2 = sc.nextInt();
             y2 = sc.nextInt();
 
-            for (int i = x1; i < x2; i++) {
-                for (int j = y1; j < y2; j++) {
+            for (int i = x1 + OFFSET; i < x2 + OFFSET; i++) {
+                for (int j = y1 + OFFSET; j < y2 + OFFSET; j++) {
                     grid[i][j] = 1;
                 }
             }
