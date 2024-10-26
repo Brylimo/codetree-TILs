@@ -13,11 +13,11 @@ public class Main {
         }
 
         int maxVal = Integer.MIN_VALUE;
-        int cnt = 0;
-        for (int i = 0; i < n - 1; i++) {
-            if (i == 0 || arr[i] != arr[i + 1]) {
+        int cnt = 1;
+        for (int i = 0; i < n; i++) {
+            if (i == 0 || arr[i - 1] != arr[i]) {
                 if (maxVal < cnt) {
-                    maxVal = cnt + 1;
+                    maxVal = cnt;
                 }
             } else{
                 cnt += 1;
