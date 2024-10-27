@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class Main {
-    public static final int MAX_N = 1000;
+    public static final int MAX_N = 1001;
     public static int cnt;
     public static boolean[] visited = new boolean[MAX_N];
-    public static ArrayList<Integer>[] graph = new ArrayList[MAX_N + 1];
+    public static ArrayList<Integer>[] graph = new ArrayList[MAX_N];
     
     public static void dfs(int vertex) {
         for (int i = 0; i < graph[vertex].size(); i++) {
