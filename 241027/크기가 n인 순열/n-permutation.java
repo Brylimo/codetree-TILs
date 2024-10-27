@@ -4,7 +4,7 @@ public class Main {
     public static final int MAX_N = 8;
     public static int n;
 
-    public static boolean[] visited = new boolean[MAX_N];
+    public static boolean[] visited = new boolean[MAX_N + 1];
     public static ArrayList<Integer> candidates = new ArrayList<>();
 
     public static void calculate(int current) {
