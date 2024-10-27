@@ -7,8 +7,9 @@ public class Main {
     public static void calculate(int current) {
         if (current == n) {
             for (int i = 0; i < candidates.size(); i++) {
-                System.out.println(candidates.get(i));
+                System.out.print(candidates.get(i) + " ");
             }
+            System.out.println();
             return;
         }
 
