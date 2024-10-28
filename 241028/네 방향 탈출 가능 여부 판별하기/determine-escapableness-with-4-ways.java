@@ -56,7 +56,7 @@ public class Main {
         queue.add(new Point(0, 0));
         bfs(0, 0);
 
-        if (visited[n - 1][n - 1]) {
+        if (visited[n - 1][m - 1]) {
             System.out.println(1);
         } else {
             System.out.println(0);
