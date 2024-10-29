@@ -23,27 +23,23 @@ public class Main {
         for (int i = 0; i < n + 1; i++) {
             Arrays.fill(dp[i], INT_MIN);
         }
-        dp[0][1] = dp[0][2] = dp[0][3] = 0;
-
+        dp[0][0] = 0;
         dp[1][1] = stairs[0];
-        dp[2][0] = stairs[1];
-        dp[2][2] = dp[1][1] + stairs[1];
 
-        for (int i = 3; i < n + 1; i++) {
-            if (dp[i-2][0] != INT_MIN)
-                dp[i][0] = dp[i - 2][0] + stairs[i - 1];
-            if (dp[i - 1][0] != INT_MIN && dp[i - 2][1]!= INT_MIN)
-                dp[i][1] = Math.max(dp[i - 1][0], dp[i - 2][1]) + stairs[i - 1];
-            if (dp[i - 1][1] != INT_MIN && dp[i - 2][2] != INT_MIN)
-                dp[i][2] = Math.max(dp[i - 1][1], dp[i - 2][2]) + stairs[i - 1];
-            if (dp[i - 1][2] != INT_MIN && dp[i - 2][3]!= INT_MIN)
-                dp[i][3] = Math.max(dp[i - 1][2], dp[i - 2][3]) + stairs[i - 1];
+        for (int i = 2; i < n + 1; i++) {
+            dp[i][0] = dp[i - 2][0] + stairs[i - 1];
+            dp[i][1] = Math.max(dp[i - 1][0], dp[i - 2][1]) + stairs[i - 1];
+            dp[i][2] = Math.max(dp[i - 1][1], dp[i - 2][2]) + stairs[i - 1];
+            dp[i][3] = Math.max(dp[i - 1][2], dp[i - 2][3]) + stairs[i - 1];
         }
 
+        /*for (int i = 1; i < n+1; i++) {
+            System.out.println(Arrays.toString(dp[i]));
+        }*/
+
         int ans = INT_MIN;
-        dp[n][1] = 0;
-        for (int i : dp[n]) {
-            ans = Math.max(ans, i);
+        for (int i = 1; i < 4; i++) {
+            ans = Math.max(ans, dp[n][i]);
         }
 
         System.out.println(ans);
