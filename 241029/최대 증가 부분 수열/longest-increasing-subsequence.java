@@ -17,12 +17,12 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        int[] dp = new int[n];
-        Arrays.fill(dp, INT_MIN);
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, 1);
 
         dp[0] = 0;
-        for (int i = 1; i < n; i++) {
-            for (int j = 0; j < i; j++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= i; j++) {
                 if (arr[i] > arr[j]) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
@@ -30,7 +30,7 @@ public class Main {
         }
 
         int ans = INT_MIN;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             ans = Math.max(ans, dp[i]);
         }
 
