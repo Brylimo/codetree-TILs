@@ -13,7 +13,7 @@ public class Main {
         int[] arr = new int[n + 1];
 
         st = new StringTokenizer(br.readLine());
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
