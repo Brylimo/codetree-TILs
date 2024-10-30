@@ -19,13 +19,13 @@ public class Main {
 
         //System.out.println(Arrays.toString(R));
 
-        int cnt = 0;
+        double cnt = 0;
         for (int i = 0; i < len - 1; i++) {
             if (array[i] == '(' && array[i + 1] == '(') {
                 cnt += R[i + 1];
             }
         }
 
-        System.out.println(cnt);
+        System.out.printf("%.0f", cnt);
     }
 }
