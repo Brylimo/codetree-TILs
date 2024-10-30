@@ -21,23 +21,13 @@ public class Main {
         }
 
         for (int i = n - 1; i >= 0; i--) {
-            if (i + 1 < n) {
-                R[i].add(arr[i + 1]);
-            }
-            if (i + 2 < n) {
-                R[i].add(arr[i + 2]);
-            }
-            if (i + 3 < n) {
-                R[i].add(arr[i + 3]);
-            }
-            if (i - 1 >= 0) {
-                R[i].add(arr[i - 1]);
-            }
-            if (i - 2 >= 0) {
-                R[i].add(arr[i - 2]);
-            }
-            if (i - 3 >= 0) {
-                R[i].add(arr[i - 3]);
+            for (int j = 1; j <= k; j++) {
+                if (i + j < n) {
+                    R[i].add(arr[i + j]);
+                }
+                if (i - j >= 0) {
+                    R[i].add(arr[i - j]);
+                }
             }
         }
 
