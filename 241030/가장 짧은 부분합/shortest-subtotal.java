@@ -11,25 +11,27 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int s = Integer.parseInt(st.nextToken());
 
-        int[] arr = new int[n];
+        int[] arr = new int[n + 1];
         st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
         // two pointer
         int ans = 100100;
-        int sum = 0;
+        long sum = 0;
 
-        int j = -1;
-        for (int i = 0; i < n; i++) {
-            while (j + 1 < n && sum + arr[j + 1] < s) {
+        int j = 0;
+        for (int i = 1; i <= n; i++) {
+            if (j >= n && sum < s) break;
+            
+            while (j + 1 <= n && sum + arr[j + 1] < s) {
                 sum += arr[j + 1];
 
                 j += 1;
             }
 
-            ans = Math.min(ans, j + 1 - i + 1);
+            ans = Math.min(ans, j - i + 2);
             sum -= arr[i];
         }
 
