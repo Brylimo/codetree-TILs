@@ -9,12 +9,9 @@ public class Main {
 
         int len = array.length;
         int[] R = new int[len];
-
-        if (array[len - 1] == ')')
-            R[len - 1] = 1;
         
         for (int i = len - 2; i >= 0; i--) {
-            if (array[i] == ')')
+            if (array[i] == ')' && array[i + 1] == ')')
                 R[i] = R[i + 1] + 1;
             else
                 R[i] = R[i + 1];
@@ -25,7 +22,7 @@ public class Main {
         int cnt = 0;
         for (int i = 0; i < len - 1; i++) {
             if (array[i] == '(' && array[i + 1] == '(') {
-                cnt += R[i + 1] / 2;
+                cnt += R[i + 1];
             }
         }
 
