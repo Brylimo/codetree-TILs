@@ -1,6 +1,20 @@
 import java.util.*;
 import java.io.*;
 
+class Point implements Comparable<Point> {
+    int x, v;
+
+    public Point(int x, int v) {
+        this.x = x;
+        this.v = v;
+    }
+
+    @Override
+    public int compareTo(Point p) {
+        return this.x - p.x;
+    }
+}
+
 public class Main {
     public static final int MAX_N = 100000;
 
@@ -11,20 +25,22 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        int[] line = new int[MAX_N + 1];
+        ArrayList<Point> points = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             int x1 = Integer.parseInt(st.nextToken());
             int x2 = Integer.parseInt(st.nextToken());
 
-            line[x1] = 1;
-            line[x2] = -1;
+            points.add(new Point(x1, 1));
+            points.add(new Point(x2, -1));
         }
+
+        Collections.sort(points);
 
         int ans = 0;
         int sum = 0;
-        for (int i = 0; i <= MAX_N; i++) {
-            sum += line[i];
+        for (int i = 0; i < points.size(); i++) {
+            sum += points.get(i).v;
             ans = Math.max(ans, sum);
         }
 
