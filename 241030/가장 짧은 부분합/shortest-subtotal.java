@@ -35,7 +35,7 @@ public class Main {
             sum -= arr[i];
         }
 
-        if (ans == 100100) {
+        if (ans > n) {
             System.out.println(-1);
         } else {
             System.out.println(ans);
