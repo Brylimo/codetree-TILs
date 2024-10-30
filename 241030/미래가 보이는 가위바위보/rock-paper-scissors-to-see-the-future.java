@@ -56,7 +56,7 @@ public class Main {
             }
         }
 
-        int ans = INT_MIN;
+        int ans = Math.max(Math.max(L[0][n - 1], L[1][n - 1]), L[2][n - 1]);
         for (int i = 0; i < 3; i++) {
             for (int j = 1; j < n; j++) {
                 for (int k = 0; k < 3; k++) {
