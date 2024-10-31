@@ -47,7 +47,7 @@ public class Main {
 
             int ans = lowerBound(x);
 
-            if (ans == n || (ans - 1 < n && arr[ans - 1] != x)) System.out.println(-1);
+            if (ans >= n || (ans - 1 < n && arr[ans - 1] != x)) System.out.println(-1);
             else System.out.println(ans);
         }
     }
