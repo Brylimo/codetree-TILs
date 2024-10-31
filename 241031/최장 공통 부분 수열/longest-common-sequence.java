@@ -14,9 +14,9 @@ public class Main {
         int lenB = b.length();
         int[][] dp = new int[lenA][lenB];
 
-        for (int i = 0; i < lenA; i++) {
+        /*for (int i = 0; i < lenA; i++) {
             Arrays.fill(dp[i], INT_MIN);
-        }
+        }*/
 
         if (a.charAt(0) == b.charAt(0))
             dp[0][0] = 1;
