@@ -58,6 +58,7 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
+        Arrays.sort(arr);
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
 
@@ -67,7 +68,7 @@ public class Main {
             int leftIdx = lowerBound(a);
             int rightIdx = customBound(b);
 
-            if (leftIdx == n || rightIdx == -1) System.out.println(0);
+            if (leftIdx > rightIdx) System.out.println(0);
             else System.out.println(rightIdx - leftIdx + 1);
         
         }
