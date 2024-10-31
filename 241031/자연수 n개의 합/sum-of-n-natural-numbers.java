@@ -27,7 +27,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // 여기에 코드를 작성해주세요.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        s = Integer.parseInt(br.readLine());
+        s = Long.parseLong(br.readLine());
 
         long ans = binarySearch();
 
