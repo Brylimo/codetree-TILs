@@ -6,6 +6,8 @@ public class Main {
     public static int[] arr;
 
     public static boolean isPossible(int mid) {       
+        if (mid == 0) return false;
+
         int cnt = 0;
         for (int i = 0; i < n; i++) {
             cnt += arr[i] / mid;
