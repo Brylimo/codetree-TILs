@@ -20,18 +20,12 @@ public class Main {
         while (!queue.isEmpty()) {
             Point current = queue.poll();
 
+            dir = (dir + 3) % 4;
             int nx = current.x + dx[dir];
             int ny = current.y + dy[dir];
 
-            int rotateCnt = 0;
+            int rotateCnt = 1;
             while (!inRange(nx, ny) || grid[nx][ny] == 1 || visited[nx][ny]) {
-                dir = (dir + 3) % 4;
-
-                nx = current.x + dx[dir];
-                ny = current.y + dy[dir];
-
-                rotateCnt += 1;
-
                 if (rotateCnt == 4) {
                     int nextDir = (dir + 2) % 4;
 
@@ -46,6 +40,13 @@ public class Main {
 
                     break;
                 }
+
+                dir = (dir + 3) % 4;
+
+                nx = current.x + dx[dir];
+                ny = current.y + dy[dir];
+
+                rotateCnt += 1;
             }
 
             visited[nx][ny] = true;
