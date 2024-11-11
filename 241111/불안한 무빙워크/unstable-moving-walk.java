@@ -6,10 +6,11 @@ public class Main {
     public static Pair[] belt1, belt2;
 
     static class Pair {
-        int energy;
+        int idx, energy;
         boolean occupied;
 
-        public Pair(int energy, boolean occupied) {
+        public Pair(int idx, int energy, boolean occupied) {
+            this.idx = idx;
             this.energy = energy;
             this.occupied = occupied;
         }
@@ -30,8 +31,12 @@ public class Main {
         belt1[0] = temp2;
         belt2[0] = temp1;
 
+        if (belt1[n - 1].occupied) {
+            belt1[n - 1].occupied = false;
+        }
+
         // 사람 이동
-        for (int i = n - 2; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             if (belt1[i].occupied && i + 1 < n && belt1[i + 1].energy > 0 && !belt1[i + 1].occupied) {
                 if (i + 1 < n - 1) {
                     belt1[i + 1].occupied = true;
@@ -64,10 +69,10 @@ public class Main {
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            belt1[i] = new Pair(Integer.parseInt(st.nextToken()), false);
+            belt1[i] = new Pair(i + 1, Integer.parseInt(st.nextToken()), false);
         }
         for (int i = 0; i < n; i++) {
-            belt2[i] = new Pair(Integer.parseInt(st.nextToken()), false);
+            belt2[i] = new Pair(n + i + 1, Integer.parseInt(st.nextToken()), false);
         }
 
         int cnt = 0;
@@ -78,8 +83,6 @@ public class Main {
             int sum = 0;
             for (int i = 0; i < n; i++) {
                 if (belt1[i].energy == 0) sum += 1;
-            }
-            for (int i = 0; i < n; i++) {
                 if (belt2[i].energy == 0) sum += 1;
             }
 
