@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
     public static final int INT_MIN = Integer.MIN_VALUE;
-    public static final int MAX_N = 100000;
+    public static final int MAX_N = 1000000;
     public static int[] line = new int[MAX_N + 1];
 
     public static void main(String[] args) throws IOException {
@@ -33,14 +33,14 @@ public class Main {
 
         int maxVal = sumVal;
         int current = cnt;
-        while (current != 100000) {
+        while (current != 1000000) {
             if (cnt >= 2 * k + 1) {
                 sumVal -= line[current - (2 * k)];
                 cnt -= 1;
             }
             current += 1;
 
-            if (current == 100000) break;
+            if (current == 1000000) break;
 
             sumVal += line[current];
             cnt += 1;
