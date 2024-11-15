@@ -26,26 +26,28 @@ public class Main {
         }
 
         int sumVal = 0;
-        for (int i = 1; i <= k + 1; i++) {
-            sumVal += line[i];
+        for (int i = 0; i <= k + 1; i++) {
+            if (i <= MAX_N)
+                sumVal += line[i];
         }
         int cnt = k + 1;
 
         int maxVal = sumVal;
         int current = cnt;
-        while (current != 1000000) {
+
+        while (current - k <= MAX_N) {
             if (cnt >= 2 * k + 1) {
                 sumVal -= line[current - (2 * k)];
                 cnt -= 1;
             }
             current += 1;
 
-            if (current == 1000000) break;
+            if (current > MAX_N) break;
 
-            sumVal += line[current];
-            cnt += 1;
+            if (current <= MAX_N)
+                sumVal += line[current];
+                cnt += 1;
 
-            //System.out.println(sumVal);
             maxVal = Math.max(maxVal, sumVal);
         }
 
