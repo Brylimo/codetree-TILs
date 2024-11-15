@@ -25,7 +25,7 @@ public class Main {
             }
 
             i += 1;
-            ans += 1;
+            ans += j - i + 1;
         }
 
         System.out.println(ans);
