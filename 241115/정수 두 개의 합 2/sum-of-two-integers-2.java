@@ -16,6 +16,8 @@ public class Main {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
+        Arrays.sort(arr);
+
         int ans = 0;
         int i = 0;
         int j = n - 1;
@@ -24,8 +26,10 @@ public class Main {
                 j -= 1;
             }
 
+            if (j <= i) break;
+
+            ans += j - i;
             i += 1;
-            ans += j - i + 1;
         }
 
         System.out.println(ans);
