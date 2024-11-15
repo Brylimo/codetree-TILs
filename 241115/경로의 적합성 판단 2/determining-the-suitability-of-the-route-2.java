@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
     public static final int MAX_N = 100000;
-    public static int[] parent = new int[MAX_N];
+    public static int[] parent = new int[MAX_N + 1];
 
     public static int find(int x) {
         if (parent[x] != x) {
@@ -33,6 +33,10 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
+
+        for (int i = 1; i < n; i++) {
+            parent[i] = i;
+        }
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
