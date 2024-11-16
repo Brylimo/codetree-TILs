@@ -18,6 +18,11 @@ public class Main {
             int res = res1 + res2 - res3;
 
             if (mid - res == n) {
+                if (mid % 3 == 0 || mid % 5 == 0) {
+                    end = mid - 1;
+                    continue;
+                }
+                
                 return mid;
             }
 
