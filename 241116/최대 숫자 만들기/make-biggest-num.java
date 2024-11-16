@@ -6,6 +6,7 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
         int n = Integer.parseInt(br.readLine());
         String[] arr = new String[n];
@@ -21,11 +22,10 @@ public class Main {
             }
         });
 
-        String ans = "";
         for (String str : arr) {
-            ans += str;
+            sb.append(str);
         }
 
-        System.out.println(ans);
+        System.out.println(sb);
     }
 }
