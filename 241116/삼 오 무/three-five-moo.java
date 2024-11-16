@@ -1,21 +1,21 @@
 import java.util.*;
 
 public class Main {
-    public static final int MAX_N = (int)Math.pow(10, 9);
+    public static final int MAX_N = Integer.MAX_VALUE;
     public static int n;
 
-    public static int binarySearch() {
-        int start = 1;
-        int end = MAX_N;
+    public static long binarySearch() {
+        long start = 1;
+        long end = MAX_N;
 
         while (start <= end) {
-            int mid = (start + end) / 2;
+            long mid = (start + end) / 2;
 
-            int res1 = mid / 3;
-            int res2 = mid / 5;
-            int res3 = mid / 15;
+            long res1 = mid / 3;
+            long res2 = mid / 5;
+            long res3 = mid / 15;
 
-            int res = res1 + res2 - res3;
+            long res = res1 + res2 - res3;
 
             if (mid - res == n) {
                 if (mid % 3 == 0 || mid % 5 == 0) {
@@ -42,7 +42,7 @@ public class Main {
 
         n = sc.nextInt();
 
-        int ans = binarySearch();
+        long ans = binarySearch();
 
         System.out.println(ans);
     }
