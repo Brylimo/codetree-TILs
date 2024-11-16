@@ -13,11 +13,9 @@ public class Main {
 
             int res1 = mid / 3;
             int res2 = mid / 5;
+            int res3 = mid / 15;
 
-            int res = res1 + res2;
-
-            if (mid % 3 == 0) res -= 1;
-            if (mid % 5 == 0) res -= 1;
+            int res = res1 + res2 - res3;
 
             if (mid - res == n) {
                 return mid;
