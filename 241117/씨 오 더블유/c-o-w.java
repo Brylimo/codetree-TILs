@@ -29,7 +29,7 @@ public class Main {
             }
         }
 
-        int cnt = 0;
+        long cnt = 0;
         for (int i = 0; i < n; i++) {
             if (str.charAt(i) == 'C') {
                 cnt += owArray[i];
