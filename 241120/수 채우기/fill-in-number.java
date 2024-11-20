@@ -18,12 +18,11 @@ public class Main {
                 flag = true;
             }
 
-            //System.out.println(ans);
             cnt += 1;
             n -= 5;
         }
 
-        if (n == 0 && !flag) {
+        if (n == 0) {
             flag = true;
             ans = Math.min(ans, cnt);
         }
