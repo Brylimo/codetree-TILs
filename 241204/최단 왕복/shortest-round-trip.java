@@ -21,7 +21,7 @@ public class Main {
 
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
-            graph[x][y] = Integer.parseInt(st.nextToken());
+            graph[x][y] = Long.parseLong(st.nextToken());
 
             graph[i][i] = 0;
         }
