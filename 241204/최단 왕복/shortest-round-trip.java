@@ -23,7 +23,7 @@ public class Main {
             int y = Integer.parseInt(st.nextToken());
             graph[x][y] = Long.parseLong(st.nextToken());
 
-            graph[i][i] = 0;
+            graph[i][i] = 0L;
         }
 
         for (int k = 1; k <= n; k++) {
