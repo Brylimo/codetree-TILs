@@ -9,11 +9,12 @@ public class Main {
         TrieNode t = root;
 
         for (int i = 0; i < s.length(); i++) {
-            if (t.children[i] == null) {
-                t.children[i] = new TrieNode();
+            int index = s.charAt(i) - '0';
+            if (t.children[index] == null) {
+                t.children[index] = new TrieNode();
             }
 
-            t = t.children[i];
+            t = t.children[index];
         }
         t.isEnd = true;
     }
@@ -22,13 +23,12 @@ public class Main {
         TrieNode t = root;
 
         for (int i = 0; i < s.length(); i++) {
-            if (t.children[i] != null) {
-                if (t.isEnd) {
-                    return true;
-                }
+            if (t.isEnd) {
+                return true;
             }
 
-            t = t.children[i];
+            int index = s.charAt(i) - '0';
+            t = t.children[index];
         }
 
         return false;
