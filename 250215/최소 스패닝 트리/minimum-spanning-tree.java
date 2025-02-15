@@ -18,9 +18,9 @@ public class Main {
         int parentB = find(b);
 
         if (parentA < parentB) {
-            parent[b] = a;
+            parent[parentB] = parentA;
         } else {
-            parent[a] = b;
+            parent[parentA] = parentB;
         }
     }
 
