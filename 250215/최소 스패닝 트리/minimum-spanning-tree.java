@@ -47,7 +47,7 @@ public class Main {
             pq.add(new Pair(x, y, dist));
         }
 
-        int sum = 0;
+        long sum = 0;
         while (!pq.isEmpty()) {
             Pair current = pq.poll();
 
