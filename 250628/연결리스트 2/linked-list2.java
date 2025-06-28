@@ -64,7 +64,7 @@ public class Main {
                 Node nodeX = nodes[x];
                 Node nodeY = nodes[y];
 
-                connect(nodeX.nxt, nodeY);
+                connect(nodeY, nodeX.nxt);
                 connect(nodeX, nodeY);
             } else if (op == 4) { // x번 노드의 이전 노드와 다음 노드의 번호를 출력
                 int x = sc.nextInt();
